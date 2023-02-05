@@ -1,5 +1,14 @@
 /* ./src/tailwind.css */
 @tailwind base;
+
+@layer base {
+  h1 {
+    @apply text-[54px] font-black leading-[50px];
+  }
+  h2 {
+    @apply text-[24px] font-normal leading-[20px] text-[red] tracking-widest mt-2;
+  }
+}
 @tailwind components;
 @tailwind utilities;
 
@@ -15,8 +24,8 @@ body,
 }
 
 body{
-  background: black;
-  background: linear-gradient(0deg, black 0%, purple 100%);
+  background: rgb(255,0,254);
+  background: radial-gradient(circle, rgba(255,0,254,1) 0%, rgba(85,70,252,1) 100%);
 }
 
 #root {
