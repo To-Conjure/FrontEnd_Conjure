@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
   PerspectiveCamera,
@@ -8,19 +8,22 @@ import {
   Html,
   useFBX,
 } from "@react-three/drei";
+import Register from "./menuPath/Register";
+import Login from "./menuPath/Login";
+import Learn from "./menuPath/Learn";
 
 const menuItem = [
   {
     label: "Login",
-    content: null,
+    content: <Login/>,
   },
   {
     label: "Sign Up",
-    content: null,
+    content: <Register/>,
   },
   {
     label: "Learn More",
-    content: null,
+    content: <Learn/>,
   },
 ];
 //spaceship model
@@ -38,6 +41,8 @@ const CustomMenu = (props) => {
   //tailwindCSS
   const menuStyle = "group relative cursor-pointer flex items-center justify-center h-[22px] text-menu font-black w-[97px] text-center text-sm hover:text-white"
   const animatedStyle = "absolute z-[-1] h-full bg-menu w-0 right-0 block transform group-hover:animate-cover"
+
+  //fbx 3d look
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
     ref.current.rotation.x = -Math.PI / 1.75 + Math.cos(t / 4) / 8;
@@ -45,7 +50,14 @@ const CustomMenu = (props) => {
     ref.current.rotation.z = (1 + Math.sin(t / 1.5)) / 20;
     ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
   });
+     //transitions scene
+    const menuClicked = (item) => {
+      props.setClickedMenu(item)
 
+      setTimeout(() => {
+        props.setTime(true)
+      }, 600)
+  }
   return (
     <group ref={ref} {...props} dispose={null}>
       {menuItem.map((item, key) => (
@@ -57,9 +69,9 @@ const CustomMenu = (props) => {
               scale={0.7}
               rotation={[Math.PI / 2, 0, 0]}
               position={[1.88, 0, (key + -2) * -0.5]}
-              transform
+              transform 
             >
-              <div className={menuStyle}>
+              <div className={menuStyle}  onClick = {() => menuClicked(item)}>
                 <div className={animatedStyle}></div>
                 {item.label}
               </div>
@@ -74,14 +86,19 @@ const CustomMenu = (props) => {
           </mesh>
         </>
       ))}
-      <Hologram color ={"red"}/>
+      <Hologram/>
     </group>
   );
 };
 
 const Interactive = () => {
+
+  const [clickedMenu, setClickedMenu] = useState(null)
+  const [time, setTime] = useState(null)
+  const menuClickedStyle = `mt-20 h-[65vh] md:mt-0 md:w-full md:h-full transition-opacity duration-500 opacity-0 ${!clickedMenu && `opacity-100`}`
   return (
-    <div className="mt-20 h-[65vh] md:mt-0 md:w-full md:h-full">
+    <>
+    <div className={menuClickedStyle}>
       <Canvas shadows dpr={[2, 3]} camera={{ position: [0, 0, 4], fov: 70 }}>
         <PerspectiveCamera
           makeDefault
@@ -105,11 +122,11 @@ const Interactive = () => {
           polar={[-Math.PI / 4, Math.PI / 4]}
           azimuth={[-Math.PI / 6, Math.PI / 6]}
         >
-          <CustomMenu
+          {!clickedMenu && <CustomMenu
             rotation={[-Math.PI / 2, 0, 0]}
             position={[0, 0.25, 0]}
-            scale={1}
-          />
+            scale={1} setClickedMenu = {setClickedMenu} setTime = {setTime}
+          />}
         </PresentationControls>
         <ContactShadows
           position={[0, -1.4, 0]}
@@ -121,6 +138,8 @@ const Interactive = () => {
         <Environment preset="city" />
       </Canvas>
     </div>
+       {clickedMenu }
+       </>
   );
 };
 
