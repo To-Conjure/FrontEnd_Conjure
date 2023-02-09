@@ -74,7 +74,7 @@ const CustomMenu = (props) => {
           </mesh>
         </>
       ))}
-      <Hologram color ={"red"}/>
+      <Hologram/>
     </group>
   );
 };
