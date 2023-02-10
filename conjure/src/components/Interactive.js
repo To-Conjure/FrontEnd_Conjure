@@ -18,7 +18,7 @@ const menuItem = [
     content: <Login />,
   },
   {
-    label: "Sign Up",
+    label: "Register",
     content: <Register />,
   },
   {
@@ -31,7 +31,7 @@ const menuItem = [
 // return <primitive object={fbx} scale={0.2} rotation={[2.2, -0.3, 0]} />;
 
 const Hologram = () => {
-  const fbx = useFBX("/assets/holo.fbx");
+  const fbx = useFBX("/fbxAssets/holo.fbx");
   return <primitive object={fbx} scale={0.0005} rotation={[2.2, -0.3, 0]} />;
 };
 
@@ -58,7 +58,7 @@ const CustomMenu = (props) => {
 
     setTimeout(() => {
       props.setTime(true);
-    }, 300);
+    }, 1000);
   };
   return (
     <group ref={ref} {...props} dispose={null}>
@@ -105,6 +105,8 @@ const Interactive = () => {
   const menuClickedStyle = `mt-20 h-[65vh] md:mt-0 md:w-full md:h-full transition-opacity duration-500 opacity-0 ${
     !clickedMenu && `opacity-100`
   }`;
+  const loaded = "[url('https://cdn.dribbble.com/users/2973561/screenshots/5757826/media/221d6bfc1960ab98a7585fcc2a4d0181.gif')]"
+  const curtain = "[url('https://thumbs.gfycat.com/AccurateGloomyBlueshark-size_restricted.gif')]"
   return (
     <>
       <div className={menuClickedStyle}>
@@ -152,16 +154,18 @@ const Interactive = () => {
         </Canvas>
       </div>
       {clickedMenu && (
-        <div className="absolute w-full min-h-full bg-gradient top-0 z-20 flex justify-center">
+        <div className="absolute w-full min-h-full bg-dark top-0 z-20 flex justify-center">
+
+          {/* closeButton appearence */}
           <div
             className={`p-10 mt-8 md:mt-0 md:max-w-[80%] md:p-20 transition-opacity duration-1000 opacity-0 ${
-              time && "delay-300 opacity-100"
+              time && "delay-600 opacity-100"
             }`}
           >
             {clickedMenu.content}
 
             <div
-              className="fixed group top-[10px] right-[10px] md:top-[50px] md:right-[50px] w-[50px] h-[50px] bg-primary cursor-pointer flex justify-center items-center text-menuText hover:text-white"
+              className="fixed group top-[10px] right-[10px] md:top-[50px] md:right-[50px] w-[50px] h-[50px] bg-white cursor-pointer flex justify-center items-center text-black hover:text-white"
               onClick={() => closePage()}
               // onMouseEnter={() => isMusic && hoverSoundEffect()}
             >
@@ -171,6 +175,9 @@ const Interactive = () => {
           </div>
         </div>
       )}
+
+      {/* transition effects */}
+       <div className={`absolute block w-full bg-cover bg-center bg-load-img z-20 transition-all duration-500 ease-in ${clickedMenu ? 'bottom-0 h-full' : 'h-0'}  ${time && 'delay-[unset] top-0 h-0'}`}></div>
     </>
   );
 };

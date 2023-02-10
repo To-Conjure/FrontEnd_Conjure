@@ -1,7 +1,7 @@
 const Learn = () => {
     return (
         <div>
-            <p>hi</p>
+            <p>learn more</p>
         </div>
     )    
 }
