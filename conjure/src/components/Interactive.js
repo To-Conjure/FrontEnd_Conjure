@@ -11,6 +11,8 @@ import {
 import Register from "./menuPath/Register";
 import Login from "./menuPath/Login";
 import Learn from "./menuPath/Learn";
+import { useNavigate } from "react-router-dom";
+import { TitleMenu } from "./TitleMenu";
 
 const menuItem = [
   {
@@ -22,8 +24,8 @@ const menuItem = [
     content: <Register />,
   },
   {
-    label: "Learn More",
-    content: <Learn />,
+    label: "Guest",
+    content: <TitleMenu />,
   },
 ];
 //spaceship model
@@ -58,9 +60,10 @@ const CustomMenu = (props) => {
 
     setTimeout(() => {
       props.setTime(true);
-    }, 1000);
+    }, 1500);
   };
   return (
+  
     <group ref={ref} {...props} dispose={null}>
       {menuItem.map((item, key) => (
         <>
@@ -73,6 +76,7 @@ const CustomMenu = (props) => {
               position={[1.88, 0, (key + -2) * -0.5]}
               transform
             >
+              {console.log(item)}
               <div className={menuStyle} onClick={() => menuClicked(item)}>
                 <div className={animatedStyle}></div>
                 {item.label}
@@ -90,6 +94,7 @@ const CustomMenu = (props) => {
       ))}
       <Hologram />
     </group>
+
   );
 };
 
@@ -101,14 +106,22 @@ const Interactive = () => {
     window.scrollTo(0, 0);
   };
   const [clickedMenu, setClickedMenu] = useState(null);
+  const navigate = useNavigate();
   const [time, setTime] = useState(null);
   const menuClickedStyle = `mt-20 h-[65vh] md:mt-0 md:w-full md:h-full transition-opacity duration-500 opacity-0 ${
     !clickedMenu && `opacity-100`
   }`;
   const loaded = "[url('https://cdn.dribbble.com/users/2973561/screenshots/5757826/media/221d6bfc1960ab98a7585fcc2a4d0181.gif')]"
-  const curtain = "[url('https://thumbs.gfycat.com/AccurateGloomyBlueshark-size_restricted.gif')]"
+  // const curtain = "[url('https://thumbs.gfycat.com/AccurateGloomyBlueshark-size_restricted.gif')]"
+
+
   return (
     <>
+    <div className="absolute bottom-3/4 left-1/3 transform -translate-x-3/4 -translate-y-3/4">
+    <h1 className="drop-shadow-md text-primary md:text-[120px]">
+      Conjure
+    </h1>
+    </div>
       <div className={menuClickedStyle}>
         <Canvas shadows dpr={[2, 3]} camera={{ position: [0, 0, 4], fov: 70 }}>
           <PerspectiveCamera
@@ -153,8 +166,9 @@ const Interactive = () => {
           <Environment preset="city" />
         </Canvas>
       </div>
+      {/* menus bg color */}
       {clickedMenu && (
-        <div className="absolute w-full min-h-full bg-dark top-0 z-20 flex justify-center">
+        <div className="absolute w-full min-h-full bg-black top-0 z-20 flex justify-center">
 
           {/* closeButton appearence */}
           <div

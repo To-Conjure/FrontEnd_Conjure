@@ -17,7 +17,11 @@ module.exports = {
         border: "rgba(66, 6, 129, 1)",
         white: "white"
       },
+      flex: {
+        '2': '2 2 0%'
+      },
       backgroundImage: {
+        'magic-img': "url('~/src/components/images/magic.jpg')",
         'load-img': "url('~/src/components/images/loading.gif')",
         gradient: "radial-gradient(circle, rgba(253,33,189,1) 28%, rgba(180,2,255,1) 72%);",
         sunBG: "radial-gradient(circle, rgba(253,129,33,0.9220063025210083) 19%, rgba(209,55,17,1) 72%)",
