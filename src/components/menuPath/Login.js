@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 
 const Login = () => {
   return (
@@ -47,12 +47,12 @@ const Login = () => {
 
           <div className="text-grey-dark mt-6 text-white">
             Need an account?&nbsp;&nbsp;
-            <Link
+            <a
               to = "/register"
               className="no-underline text-center border-b border-blue text-white"
             >
             Register Now 
-            </Link>
+            </a>
             .
           </div>
         </div>

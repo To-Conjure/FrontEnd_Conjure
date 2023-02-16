@@ -5,15 +5,15 @@ import Login from "./components/menuPath/Login";
 import Register from "./components/menuPath/Register";
 import Interactive from "./components/Interactive";
 import Error from "./components/menuPath/Error";
-import { TitleMenu } from "./components/TitleMenu";
+import HomeMenu  from "./components/HomeMenu";
 
 const App = () => {
     <>
         <Routes>
-          <Route path="/" element={<Interactive />} />
+          <Route path="/" element={<HomeMenu />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/landing" element={<TitleMenu />} />
+          <Route path="/play" element={<Interactive />} />
           <Route path="*" element={<Error />} />
         </Routes>
     </>

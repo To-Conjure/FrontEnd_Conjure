@@ -8,29 +8,21 @@ import {
   Html,
   useFBX,
 } from "@react-three/drei";
-import Register from "./menuPath/Register";
-import Login from "./menuPath/Login";
-import Learn from "./menuPath/Learn";
+import Game from "./Gaming/Game";
+import Tutorial from "./Gaming/Tutorial";
 import { useNavigate } from "react-router-dom";
-import { TitleMenu } from "./TitleMenu";
 
 const menuItem = [
   {
-    label: "Login",
-    content: <Login />,
+    label: "Game",
+    content: <Game />,
   },
   {
-    label: "Register",
-    content: <Register />,
-  },
-  {
-    label: "Guest",
-    content: <TitleMenu />,
+    label: "Tutorial",
+    content: <Tutorial/>,
   },
 ];
-//spaceship model
-// const fbx = useFBX('/assets/Spaceship.fbx')
-// return <primitive object={fbx} scale={0.2} rotation={[2.2, -0.3, 0]} />;
+ 
 
 const Hologram = () => {
   const fbx = useFBX("/fbxAssets/holo.fbx");
@@ -38,8 +30,9 @@ const Hologram = () => {
 };
 
 const CustomMenu = (props) => {
+  const navigate = useNavigate()
   const ref = useRef();
-
+  
   //tailwindCSS
   const menuStyle =
     "group relative cursor-pointer flex items-center justify-center h-[22px] text-menu font-black w-[97px] text-center text-sm hover:text-white";
@@ -97,23 +90,21 @@ const CustomMenu = (props) => {
 
   );
 };
-
 const Interactive = () => {
-  //close page
+  //close page  
+  const navigate = useNavigate()
   const closePage = () => {
     setClickedMenu(null);
     setTime(null);
     window.scrollTo(0, 0);
   };
+
   const [clickedMenu, setClickedMenu] = useState(null);
-  const navigate = useNavigate();
   const [time, setTime] = useState(null);
+  
   const menuClickedStyle = `mt-20 h-[65vh] md:mt-0 md:w-full md:h-full transition-opacity duration-500 opacity-0 ${
     !clickedMenu && `opacity-100`
   }`;
-  const loaded = "[url('https://cdn.dribbble.com/users/2973561/screenshots/5757826/media/221d6bfc1960ab98a7585fcc2a4d0181.gif')]"
-  // const curtain = "[url('https://thumbs.gfycat.com/AccurateGloomyBlueshark-size_restricted.gif')]"
-
 
   return (
     <>
@@ -176,7 +167,7 @@ const Interactive = () => {
               time && "delay-600 opacity-100"
             }`}
           >
-            {clickedMenu.content}
+            {navigate(clickedMenu.content)}
 
             <div
               className="fixed group top-[10px] right-[10px] md:top-[50px] md:right-[50px] w-[50px] h-[50px] bg-white cursor-pointer flex justify-center items-center text-black hover:text-white"
