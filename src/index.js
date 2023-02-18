@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import { Loader } from "@react-three/drei";
 import { Footer } from "./components/Footer";
 import { BrowserRouter } from "react-router-dom";
-import App from "./app";
+import App from "./App";
 import ContextProvider from "./Context/ContextProvider";
 import HomeMenu from "./components/HomeMenu";
 import Interactive from "./components/Interactive";
@@ -17,7 +17,6 @@ root.render(
       <ContextProvider>
         <Suspense fallback={null}>
           <App />
-          <HomeMenu />
           <Footer />
         </Suspense>
         <Loader />

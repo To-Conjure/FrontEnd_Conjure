@@ -8,18 +8,19 @@ import {
   Html,
   useFBX,
 } from "@react-three/drei";
-import Game from "./Gaming/Game";
-import Tutorial from "./Gaming/Tutorial";
+import Login from "./menuPath/Login";
+import Register from "./menuPath/Register";
+import HomeMenu from "./HomeMenu";
 import { useNavigate } from "react-router-dom";
 
 const menuItem = [
   {
-    label: "Game",
-    content: <Game />,
+    label: "Login",
+    content: <Login />,
   },
   {
-    label: "Tutorial",
-    content: <Tutorial/>,
+    label: "Register",
+    content: <Register/>,
   },
 ];
  
@@ -29,10 +30,14 @@ const Hologram = () => {
   return <primitive object={fbx} scale={0.0005} rotation={[2.2, -0.3, 0]} />;
 };
 
+
 const CustomMenu = (props) => {
   const navigate = useNavigate()
   const ref = useRef();
-  
+
+  const transition = () => {
+    navigate("/play")
+  }
   //tailwindCSS
   const menuStyle =
     "group relative cursor-pointer flex items-center justify-center h-[22px] text-menu font-black w-[97px] text-center text-sm hover:text-white";
@@ -50,7 +55,6 @@ const CustomMenu = (props) => {
   //transitions scene
   const menuClicked = (item) => {
     props.setClickedMenu(item);
-
     setTimeout(() => {
       props.setTime(true);
     }, 1500);
@@ -69,7 +73,6 @@ const CustomMenu = (props) => {
               position={[1.88, 0, (key + -2) * -0.5]}
               transform
             >
-              {console.log(item)}
               <div className={menuStyle} onClick={() => menuClicked(item)}>
                 <div className={animatedStyle}></div>
                 {item.label}
@@ -85,6 +88,27 @@ const CustomMenu = (props) => {
           </mesh>
         </>
       ))}
+            <mesh>
+            <Html
+              wrapperClass
+              scale={0.7}
+              rotation={[Math.PI / 2, 0, 0]}
+              position={[1.88, 0, (0) * -0.5]}
+              transform
+            >
+              <div className={menuStyle} onClick = {() => transition()}>
+                <div className={animatedStyle}></div>
+                Play Now
+              </div>
+            </Html>
+          </mesh>
+          <mesh
+            scale={[1.7, 0.1, 0.4]}
+            position={[1.88, 0.06, (0) * -0.5]}
+          >
+            <boxBufferGeometry />
+            <meshStandardMaterial color="#ff0a65" />
+          </mesh>
       <Hologram/>
     </group>
 
@@ -93,6 +117,7 @@ const CustomMenu = (props) => {
 const Interactive = () => {
   //close page  
   const navigate = useNavigate()
+
   const closePage = () => {
     setClickedMenu(null);
     setTime(null);
@@ -167,7 +192,7 @@ const Interactive = () => {
               time && "delay-600 opacity-100"
             }`}
           >
-            {navigate(clickedMenu.content)}
+            {clickedMenu.content}
 
             <div
               className="fixed group top-[10px] right-[10px] md:top-[50px] md:right-[50px] w-[50px] h-[50px] bg-white cursor-pointer flex justify-center items-center text-black hover:text-white"
