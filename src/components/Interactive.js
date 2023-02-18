@@ -184,7 +184,7 @@ const Interactive = () => {
       </div>
       {/* menus bg color */}
       {clickedMenu && (
-        <div className="absolute w-full min-h-full bg-black top-0 z-20 flex justify-center">
+        <div className="absolute w-full min-h-full bg-black-img top-0 z-20 flex justify-center">
 
           {/* closeButton appearence */}
           <div

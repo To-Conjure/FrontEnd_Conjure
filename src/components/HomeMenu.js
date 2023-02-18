@@ -8,12 +8,12 @@ import {
   ContactShadows,
   useFBX,
 } from "@react-three/drei";
-import { MeshBasicMaterial } from "three";
+
 
 //Model
 const Spaceship = () => {
-  const fbx = useFBX("/fbxAssets/Spaceship.fbx");
-  return <primitive object={fbx} scale={0.25} rotation={[2.2, -0.3, 0]} />;
+  const fbx = useFBX("/fbxAssets/maya.fbx");
+  return <primitive object={fbx} scale={0.15} rotation={[2.2, -0.3, 0]} />;
 };
 
 //Movement
@@ -35,14 +35,14 @@ const ModelAnimated = (props) => {
 }
 const MenuModel = () => {
   return (
-      <Canvas shadows dpr={[2, 3]} camera={{ position: [0, 0, 5], fov: 90 }}>
+      <Canvas shadows dpr={[2, 3]} camera={{ position: [0, 0, 0], fov: 90 }}>
         <PerspectiveCamera
           makeDefault
           fov={70}
-          position={[0, 0, 5]}
+          position={[0, 0, 15]}
           focusDistance={[0, 0]}
         />
-        <ambientLight color="red" intensity={0.5} />
+        <ambientLight color="black" intensity={0.5} />
         <spotLight
           position={[10, 10, 10]}
           angle={0.15}
@@ -82,7 +82,7 @@ const HomeMenu = () => {
 
   const textStyle = "text-white mt-10 md:text-[50px] font-bold";
   return (
-    <div className="absolute w-full min-h-full bg-black">
+    <div className="w-full h-full bg-cover bg-center bg-stars-img flex justify-center ">
       <div>
       <MenuModel />
       <div className="absolute top-[20px] left-[20px] md:top-[30px] md:left-[50px]">
