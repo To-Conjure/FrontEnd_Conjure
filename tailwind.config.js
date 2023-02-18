@@ -21,6 +21,7 @@ module.exports = {
         '2': '2 2 0%'
       },
       backgroundImage: {
+        'stars-img': "url('~/src/components/images/stars.jpg')",
         'magic-img': "url('~/src/components/images/magic.jpg')",
         'load-img': "url('~/src/components/images/loading.gif')",
         gradient: "radial-gradient(circle, rgba(253,33,189,1) 28%, rgba(180,2,255,1) 72%);",
