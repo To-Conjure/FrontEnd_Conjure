@@ -1,12 +1,12 @@
 import { usePlane } from "@react-three/cannon"
 import { NearestFilter, RepeatWrapping } from "three"
 
-import grassTexture from "./images/texture"
+import grassTexture from "../images/texture"
 
 export const Ground = () => {
     
     const [ref] = usePlane(() => ({
-        rotation: [-Math.PI / 3,0,0], position:[0,0,0]
+        rotation: [-Math.PI / 4,0,0], position:[0,0,0]
     }))
     grassTexture.magFilter = NearestFilter
     grassTexture.wrapS = RepeatWrapping

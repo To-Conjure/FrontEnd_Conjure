@@ -10,7 +10,6 @@ import {
 } from "@react-three/drei";
 import Login from "./menuPath/Login";
 import Register from "./menuPath/Register";
-import HomeMenu from "./HomeMenu";
 import { useNavigate } from "react-router-dom";
 
 const menuItem = [
@@ -184,7 +183,7 @@ const Interactive = () => {
       </div>
       {/* menus bg color */}
       {clickedMenu && (
-        <div className="absolute w-full min-h-full bg-black-img top-0 z-20 flex justify-center">
+        <div className="absolute w-full min-h-full bg-black top-0 z-20 flex justify-center">
 
           {/* closeButton appearence */}
           <div

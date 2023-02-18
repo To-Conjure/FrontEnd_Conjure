@@ -1,9 +1,21 @@
-const Game = () => {
-    return (
-        <div>
-            <p>Game</p>
-        </div>
-    )    
-}
+import { Physics } from "@react-three/cannon";
+import { Sky } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { Ground } from "./Ground";
+import { Player } from "./Player";
 
-export default Game
+
+export default function Map(){
+    return (
+        <>
+        <Canvas>
+            <Sky sunPosition={[100,100,20]}/>
+            <ambientLight intensity={0.5}/>
+            <Physics>
+                <Player/>
+                <Ground/>
+            </Physics>
+        </Canvas>
+        </>
+    )
+}
