@@ -15,7 +15,7 @@ module.exports = {
         shadow: "red",
         slide: "#f00",
         border: "rgba(66, 6, 129, 1)",
-        white: "white"
+        white: "white",
       },
       flex: {
         '2': '2 2 0%'

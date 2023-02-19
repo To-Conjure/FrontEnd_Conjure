@@ -82,6 +82,8 @@ export const Player = () => {
     }
   
   });
+
+  
   return (
     <>
     <mesh ref={ref} />
