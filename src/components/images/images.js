@@ -1,4 +1,8 @@
 import grass from "./grass.jpg"
+import stone from "./stone.png"
 
 
-export default grass
+export {
+    grass,
+    stone,
+}

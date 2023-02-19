@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
@@ -11,19 +11,21 @@ import {
 
 
 //Model
+//Spaceship
 const Spaceship = () => {
-  const fbx = useFBX("/fbxAssets/maya.fbx");
-  return <primitive object={fbx} scale={0.15} rotation={[2.2, -0.3, 0]} />;
+  const fbx = useFBX("/fbxAssets/Spaceship.fbx");
+  return <primitive object={fbx} scale={0.5} rotation={[2.2, -0.3, 0]} />;
 };
 
 //Movement
 const ModelAnimated = (props) => {
   const ref = useRef()
+
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
-    ref.current.rotation.x = -Math.PI / 1.75 + Math.cos(t / 4) / 8;
-    ref.current.rotation.y = Math.sin(t / 4) / 8;
-    ref.current.rotation.z = (1 + Math.sin(t / 1.5)) / 20;
+    ref.current.rotation.x = -Math.PI / 1.8 + Math.cos(t / 4) / 8;
+    ref.current.rotation.y = Math.sin(t / 2) / 8;
+    ref.current.rotation.z = (1 + Math.sin(t / 4)) / 10;
     ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
   });
 
@@ -34,6 +36,7 @@ const ModelAnimated = (props) => {
   )
 }
 const MenuModel = () => {
+  const textStyle = "text-white mt-10 md:text-[50px] font-bold";
   return (
       <Canvas shadows dpr={[2, 3]} camera={{ position: [0, 0, 0], fov: 90 }}>
         <PerspectiveCamera
@@ -42,7 +45,7 @@ const MenuModel = () => {
           position={[0, 0, 15]}
           focusDistance={[0, 0]}
         />
-        <ambientLight color="black" intensity={0.5} />
+        <ambientLight color="pink" intensity={0.5} />
         <spotLight
           position={[10, 10, 10]}
           angle={0.15}
@@ -74,17 +77,16 @@ const MenuModel = () => {
 
 const HomeMenu = () => {
   const navigate = useNavigate();
+  const textStyle = "text-white mt-10 md:text-[50px] font-bold";
 
   const navPage = (e) => {
     const path = e.target.innerText.toLowerCase();
     navigate(`/${path}`);
   };
 
-  const textStyle = "text-white mt-10 md:text-[50px] font-bold";
   return (
-    <div className="w-full h-full bg-cover bg-center bg-stars-img flex justify-center ">
-      <div>
-      <MenuModel />
+      <div className="w-full h-full bg-cover bg-center bg-galaxy-img flex justify-center">
+      <MenuModel /> 
       <div className="absolute top-[20px] left-[20px] md:top-[30px] md:left-[50px]">
         <h1 className="drop-shadow-md text-white md:text-[120px]">
           <br />
@@ -103,8 +105,8 @@ const HomeMenu = () => {
         </section>
       </div>
       </div>
-    </div>
   );
 };
+
 
 export default HomeMenu;

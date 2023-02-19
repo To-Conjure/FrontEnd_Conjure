@@ -21,6 +21,7 @@ module.exports = {
         '2': '2 2 0%'
       },
       backgroundImage: {
+        'galaxy-img': "url('~/src/components/images/galaxy.jpg')",
         'stars-img': "url('~/src/components/images/stars.jpg')",
         'magic-img': "url('~/src/components/images/magic.jpg')",
         'load-img': "url('~/src/components/images/loading.gif')",
