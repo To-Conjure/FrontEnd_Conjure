@@ -2,29 +2,34 @@ import { useCallback, useEffect, useState } from "react"
 
 function actionKeys(key){
     const keyActionList = {
-        keyW: "goForward",
-        keyA: "goLeft",
-        keyS: "goBackward",
-        keyD: "goRight",
+        KeyW: "goForward",
+        KeyA: "goLeft",
+        KeyS: "goBackward",
+        KeyD: "goRight",
         Space: "jump",
-        Digit1: "grass"
+		ShiftLeft: "sprint",
+        Digit1: "stone",
+		Digit2: "grass"
     }
+	// console.log(key)
     return keyActionList[key]
 }
 
 export const useKeyboard = () => {
-	const [action, setAction] = useState({
+	const [actions, setActions] = useState({
 		goForward: false,
 		goBackward: false,
 		goLeft: false,
 		goRight: false,
+		sprint: false,
 		grass: false,
 	})
 
 	const handleKeyDown = useCallback((e) => {
+		console.log(e)
 		const action = actionKeys(e.code)
 		if (action) {
-			setAction((prev) => {
+			setActions((prev) => {
 				return ({
 					...prev,
 					[action]: true
@@ -34,10 +39,10 @@ export const useKeyboard = () => {
 	}, [])
 
 	const handleKeyUp = useCallback((e) => {
-        // console.log(e)
+        console.log(e)
 		const action = actionKeys(e.code)
 		if (action) {
-			setAction((prev) => {
+			setActions((prev) => {
 				return ({
 					...prev,
 					[action]: false
@@ -57,5 +62,5 @@ export const useKeyboard = () => {
 		}
 	}, [handleKeyDown, handleKeyUp])
 
-	return action
+	return actions
 }

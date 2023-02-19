@@ -1,7 +1,11 @@
 import { TextureLoader } from "three";
 
-import grass from "./images";
+import { grass, stone } from "./images";
 
 const grassTexture = new TextureLoader().load(grass)
+const stoneTexture = new TextureLoader().load(stone)
 
-export default grassTexture
+export {
+    grassTexture,
+    stoneTexture
+}
