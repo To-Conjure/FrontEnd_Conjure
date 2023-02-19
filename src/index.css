@@ -23,10 +23,10 @@ body,
   padding: 0;
 }
 
-body{
+/* body{
   background: rgb(255,0,254);
   background: radial-gradient(circle, rgba(255,0,254,1) 0%, rgba(85,70,252,1) 100%);
-}
+} */
 
 .load {
   background-image: url("./components/images/loading.gif");
