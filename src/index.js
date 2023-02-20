@@ -3,12 +3,11 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { Suspense } from "react";
 import { Loader } from "@react-three/drei";
-import { Footer } from "./components/Footer";
+import { Footer } from "./components/Pages/Footer";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import ContextProvider from "./Context/ContextProvider";
-import HomeMenu from "./components/HomeMenu";
-import Interactive from "./components/Interactive";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

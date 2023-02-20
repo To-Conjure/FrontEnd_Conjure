@@ -14,7 +14,7 @@ import {
 //Spaceship
 const Spaceship = () => {
   const fbx = useFBX("/fbxAssets/Spaceship.fbx");
-  return <primitive object={fbx} scale={0.5} rotation={[2.2, -0.3, 0]} />;
+  return <primitive object={fbx} scale={0.8} rotation={[2.2, -0.3, 0]} />;
 };
 
 //Movement
@@ -47,7 +47,7 @@ const MenuModel = () => {
         />
         <ambientLight color="pink" intensity={0.5} />
         <spotLight
-          position={[10, 10, 10]}
+          position={[100, 10, 10]}
           angle={0.15}
           penumbra={1}
           shadow-mapSize={[512, 512]}
@@ -96,8 +96,8 @@ const HomeMenu = () => {
         <br />
         <br />
         <section>
-          <p className={textStyle} onClick={navPage}>
-            Game
+          <p className={textStyle} onClick={() => navigate("/game")}>
+            Enter Game
           </p>
           <p className={textStyle} onClick={navPage}>
             Tutorial
