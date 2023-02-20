@@ -29,7 +29,7 @@ export default function Register(props) {
     };
 
     const response = await fetch(
-      "http://localhost:8000/users/register",
+      "http://localhost:3010/users/register",
       postReq
     );
     const userData = await response.json();

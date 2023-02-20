@@ -8,8 +8,8 @@ import {
   Html,
   useFBX,
 } from "@react-three/drei";
-import Login from "./menuPath/Login";
-import Register from "./menuPath/Register";
+import Login from "../menuPath/Login";
+import Register from "../menuPath/Register";
 import { useNavigate } from "react-router-dom";
 
 const menuItem = [

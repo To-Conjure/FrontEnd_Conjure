@@ -9,15 +9,18 @@ export const Ground = () => {
         rotation: [-Math.PI / 2,0,0], position:[0,0,1]
     }))
 
-    stoneTexture.magFilter = NearestFilter
-    stoneTexture.wrapS = RepeatWrapping
-    stoneTexture.wrapT = RepeatWrapping
     stoneTexture.repeat.set(100,100)
 
     return (
         <mesh ref = {ref}>
             <planeBufferGeometry attach="geometry" args = {[100,100]} />
-            <meshStandardMaterial attach="material" map = {stoneTexture}/>
+            <meshStandardMaterial
+        attach="material"
+        color="cyan"
+        map={stoneTexture}
+        roughness={1}
+        metalness={0.5}
+        />
         </mesh>
     )
 }

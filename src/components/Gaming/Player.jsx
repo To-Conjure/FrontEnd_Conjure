@@ -1,9 +1,9 @@
 import { useSphere } from "@react-three/cannon";
 import { useFrame, useThree } from "@react-three/fiber";
-import { Vector3 } from "three";
+import { AudioLoader, Vector3 } from "three";
 import { useEffect, useRef } from "react";
 import { useKeyboard } from "./hooks/useKeyboard";
-
+import * as THREE from 'three';
 
 
 const JUMP_FORCE = 4;
@@ -16,15 +16,29 @@ export const Player = () => {
   const { camera } = useThree();
   const {goBackward, goForward, goRight, goLeft, jump, sprint } = useKeyboard()
   const actions = useKeyboard()
-  console.log(
-    "actions",
-    Object.entries(actions).filter(([k, v]) => v)
-  );
+  // console.log(
+  //   "actions",
+  //   Object.entries(actions).filter(([k, v]) => v)
+  // );
   const [ref, api] = useSphere(() => ({
     mass: 1,
     type: "Dynamic",
     position: [0, 1, 0],
   }));
+
+  //Music
+  // const listener = new THREE.AudioListener();
+  // camera.add(listener)
+  // const backgroundMusic = new THREE.AudioLoader(listener);
+
+  // AudioLoader.load("../Music/battle.mp3", function (buffer) {
+  //   backgroundMusic.setBuffer(buffer);
+  //   backgroundMusic.setLoop(true)
+  //   backgroundMusic.volume(1)
+  // })
+
+
+
 
 
   //velocity for the sphere
@@ -73,7 +87,7 @@ export const Player = () => {
   
     api.velocity.set(direction.x, vel.current[1], direction.z)
 
-    
+    //run movement
     sprint ? MOVE = 10 : MOVE = 4
 
     //jump logic and prevent multiple jumps before landing
