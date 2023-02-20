@@ -1,7 +1,7 @@
 import { usePlane } from "@react-three/cannon"
-import { NearestFilter, RepeatWrapping } from "three"
 
-import {grassTexture, stoneTexture} from "../images/texture"
+
+import {stoneTexture} from "../images/textures"
 
 export const Ground = () => {
     
@@ -19,7 +19,6 @@ export const Ground = () => {
         color="cyan"
         map={stoneTexture}
         roughness={1}
-        metalness={0.5}
         />
         </mesh>
     )

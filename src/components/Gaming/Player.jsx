@@ -4,15 +4,14 @@ import { AudioLoader, Vector3 } from "three";
 import { useEffect, useRef } from "react";
 import { useKeyboard } from "./hooks/useKeyboard";
 import * as THREE from 'three';
-
+import { useNavigate } from "react-router-dom";
 
 const JUMP_FORCE = 4;
 let MOVE = 4;
 
 export const Player = () => {
-  //x,y,z axis logics
-  //[0],[1].[2]
-  //
+
+  const navigate = useNavigate()
   const { camera } = useThree();
   const {goBackward, goForward, goRight, goLeft, jump, sprint } = useKeyboard()
   const actions = useKeyboard()
@@ -37,10 +36,6 @@ export const Player = () => {
   //   backgroundMusic.volume(1)
   // })
 
-
-
-
-
   //velocity for the sphere
   const vel = useRef([0, 0, 0]);
   useEffect(() => {
@@ -53,6 +48,12 @@ export const Player = () => {
   useEffect(() => {
     return api.position.subscribe((p) => (pos.current = p));
   }, [api.position]);
+
+  const x = pos.current[0]
+  // console.log(x)
+  if(x > 5){
+    navigate("/win")
+  }
 
 
   useFrame(() => {
@@ -71,8 +72,6 @@ export const Player = () => {
       (goBackward ? 1 : 0) - (goForward ? 1 : 0)
     );
 
-    // console.log(frontVector)
-    
     //X direction left/right
     const sideVector = new Vector3(
       (goLeft ? 1 : 0) - (goRight ? 1 : 0),
@@ -94,7 +93,8 @@ export const Player = () => {
     if (jump && Math.abs(vel.current[1].toFixed(2)) < 0.05) {
       api.velocity.set(vel.current[0], JUMP_FORCE, vel.current[2]);
     }
-  
+
+
   });
 
   
