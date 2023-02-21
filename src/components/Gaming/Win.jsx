@@ -89,8 +89,11 @@ export default function Win() {
           <p className={textStyle}>
             You Won
           </p>
+          <p className={textStyle} onClick ={() => navigate("/game")}>
+            Retry
+          </p>
           <p className={textStyle} onClick ={() => navigate("/")}>
-            Click to Retry
+            Home
           </p>
         </section>
       </div>

@@ -1,19 +1,17 @@
-import {useContext, useState} from "react";
+import React, { useState } from 'react';
 import Context from "./Context";
 
-const ContextProvider = ({children}) => {
-    const [users,setUsers] = useState(null)
+const ContextProvider = ({ children }) => {
+    const [user, setUser] = useState('');
     const values = {
-        users,
-        setUsers,
-    }
+        user,
+        setUser,
+    };
+  
     return (
-        <>
-        <Context.Provider value = {values}>
-            {children}
-        </Context.Provider>
-        </>
-    )
-}
-
-export default ContextProvider
+      <Context.Provider value={ values }> 
+        {children}
+      </Context.Provider>
+    );
+  }
+  export default ContextProvider;

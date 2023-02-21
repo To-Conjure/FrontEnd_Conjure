@@ -34,14 +34,12 @@ const CustomMenu = (props) => {
   const navigate = useNavigate()
   const ref = useRef();
 
-  const transition = () => {
-    navigate("/play")
-  }
+
   //tailwindCSS
   const menuStyle =
-    "group relative cursor-pointer flex items-center justify-center h-[22px] text-menu font-black w-[97px] text-center text-sm hover:text-white";
+    "group relative cursor-pointer flex items-center justify-center h-[22px] text-menu font-black w-[97px] text-center hover:text-white";
   const animatedStyle =
-    "absolute z-[-1] h-full bg-menu w-0 right-0 block transform group-hover:animate-cover";
+    "absolute z-[-1] h-full bg-menu w-0 right-0 block transform group-hover:animate-cover"
 
   //fbx 3d look
   useFrame((state) => {
@@ -53,10 +51,12 @@ const CustomMenu = (props) => {
   });
   //transitions scene
   const menuClicked = (item) => {
+    const path = item.label.toLowerCase()
     props.setClickedMenu(item);
     setTimeout(() => {
       props.setTime(true);
     }, 1500);
+    // navigate(`/${path}`)
   };
   return (
   
@@ -95,7 +95,7 @@ const CustomMenu = (props) => {
               position={[1.88, 0, (0) * -0.5]}
               transform
             >
-              <div className={menuStyle} onClick = {() => transition()}>
+              <div className={menuStyle} onClick = {() => navigate("/play")}>
                 <div className={animatedStyle}></div>
                 Play Now
               </div>
@@ -126,7 +126,7 @@ const Interactive = () => {
   const [clickedMenu, setClickedMenu] = useState(null);
   const [time, setTime] = useState(null);
   
-  const menuClickedStyle = `mt-20 h-[65vh] md:mt-0 md:w-full md:h-full transition-opacity duration-500 opacity-0 ${
+  const menuClickedStyle = `md:w-full md:h-full transition-opacity duration-500 opacity-0 ${
     !clickedMenu && `opacity-100`
   }`;
 
@@ -134,7 +134,7 @@ const Interactive = () => {
     // <div className="w-full h-full bg-cover bg-center bg-warp-img flex justify-center">
     <div className="w-full h-full bg-pink flex justify-center">
     <div className="absolute bottom-3/4 left-1/3 transform -translate-x-3/4 -translate-y-3/4">
-    <h1 className="drop-shadow-md text-primary md:text-[120px]">
+    <h1 className="drop-shadow-md text-primary md:text-[100px]">
       Conjure
     </h1>
     </div>
@@ -188,7 +188,7 @@ const Interactive = () => {
 
           {/* closeButton appearence */}
           <div
-            className={`p-10 mt-8 md:mt-0 md:max-w-[80%] md:p-20 transition-opacity duration-1000 opacity-0 ${
+            className={`p-10 mt-8 md:mt-10 md:max-w-[40%] md:p-20 transition-opacity duration-1000 opacity-0 ${
               time && "delay-600 opacity-100"
             }`}
           >
