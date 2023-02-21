@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
@@ -8,6 +8,7 @@ import {
   ContactShadows,
   useFBX,
 } from "@react-three/drei";
+import Context from "../../Context/Context";
 
 
 //Model
@@ -78,7 +79,8 @@ const MenuModel = () => {
 const HomeMenu = () => {
   const navigate = useNavigate();
   const textStyle = "text-white mt-10 md:text-[50px] font-bold";
-
+  const {users} = useContext(Context)
+  const name = users ? `Welcome ${users.username}` : "Welcome Crewmate"
   const navPage = (e) => {
     const path = e.target.innerText.toLowerCase();
     navigate(`/${path}`);
@@ -96,6 +98,9 @@ const HomeMenu = () => {
         <br />
         <br />
         <section>
+        <p className={textStyle}>
+            {name}
+          </p>
           <p className={textStyle} onClick={() => navigate("/game")}>
             Enter Game
           </p>

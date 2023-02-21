@@ -1,9 +1,8 @@
 import { useSphere } from "@react-three/cannon";
 import { useFrame, useThree } from "@react-three/fiber";
-import { AudioLoader, Vector3 } from "three";
+import {Vector3 } from "three";
 import { useEffect, useRef } from "react";
 import { useKeyboard } from "./hooks/useKeyboard";
-import * as THREE from 'three';
 import { useNavigate } from "react-router-dom";
 
 const JUMP_FORCE = 4;
@@ -25,17 +24,6 @@ export const Player = () => {
     position: [0, 1, 0],
   }));
 
-  //Music
-  // const listener = new THREE.AudioListener();
-  // camera.add(listener)
-  // const backgroundMusic = new THREE.AudioLoader(listener);
-
-  // AudioLoader.load("../Music/battle.mp3", function (buffer) {
-  //   backgroundMusic.setBuffer(buffer);
-  //   backgroundMusic.setLoop(true)
-  //   backgroundMusic.volume(1)
-  // })
-
   //velocity for the sphere
   const vel = useRef([0, 0, 0]);
   useEffect(() => {
@@ -54,7 +42,7 @@ export const Player = () => {
   const z = +pos.current[2].toFixed(0)
   const xyz = [x,y,z]
   console.log(xyz)
-  if(x > 4 && y > 6){
+  if(x >= 5 && y >= 7  && z >= 5){
     navigate("/win")
   }
 
@@ -63,6 +51,7 @@ export const Player = () => {
     
     camera.position.copy(
       new Vector3(pos.current[0], pos.current[1], pos.current[2])
+      
     );
 
     const direction = new Vector3();

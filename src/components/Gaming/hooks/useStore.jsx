@@ -6,17 +6,17 @@ export const useStore = create((set) => ({
 	cubes: [
         {
             key: nanoid(),
-            pos: [4,0.5,0],
+            pos: [10,0.5,5],
             texture: "grass",
         },
         {
             key: nanoid(),
-            pos: [4,2,2],
+            pos: [12,2,8],
             texture: "grass",
         },
         {
             key: nanoid(),
-            pos: [4,4,5],
+            pos: [15,4,6],
             texture: "grass",
         },
         {
@@ -26,7 +26,27 @@ export const useStore = create((set) => ({
         },
         {
             key: nanoid(),
+            pos: [15,5,3],
+            texture: "grass",
+        },
+        {
+            key: nanoid(),
+            pos: [10,5,3],
+            texture: "grass",
+        },
+        {
+            key: nanoid(),
             pos: [5,6,5],
+            texture: "gold",
+        },
+        {
+            key: nanoid(),
+            pos: [10,0.5,0],
+            texture: "monster",
+        },
+        {
+            key: nanoid(),
+            pos: [20,0.5,0],
             texture: "monster",
         },
     ],
