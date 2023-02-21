@@ -8,7 +8,7 @@ import {
   ContactShadows,
   useFBX,
 } from "@react-three/drei";
-import Context from "../../Context/Context";
+import { UserContext } from "../../Context/userContext";
 
 
 //Model
@@ -79,15 +79,16 @@ const MenuModel = () => {
 const HomeMenu = () => {
   const navigate = useNavigate();
   const textStyle = "text-white mt-10 md:text-[50px] font-bold";
-  const {users} = useContext(Context)
-  const name = users ? `Welcome ${users.username}` : "Welcome Crewmate"
+  const {user} = useContext(UserContext)
+  console.log(user)
+  const name = user ? `Welcome ${user.username}` : "Welcome Crewmate"
   const navPage = (e) => {
     const path = e.target.innerText.toLowerCase();
     navigate(`/${path}`);
   };
 
   return (
-      <div className="w-full h-full bg-cover bg-center bg-galaxy-img flex justify-center">
+      <div className="w-full h-full bg-cover bg-center bg-warp-img flex justify-center">
       <MenuModel /> 
       <div className="absolute top-[20px] left-[20px] md:top-[30px] md:left-[50px]">
         <h1 className="drop-shadow-md text-white md:text-[120px]">

@@ -13,7 +13,7 @@ export const Player = () => {
   const navigate = useNavigate()
   const { camera } = useThree();
   const {goBackward, goForward, goRight, goLeft, jump, sprint } = useKeyboard()
-  const actions = useKeyboard()
+  // const actions = useKeyboard()
   // console.log(
   //   "actions",
   //   Object.entries(actions).filter(([k, v]) => v)
@@ -42,7 +42,7 @@ export const Player = () => {
   const z = +pos.current[2].toFixed(0)
   const xyz = [x,y,z]
   console.log(xyz)
-  if(x >= 5 && y >= 7  && z >= 5){
+  if(x === 5 && y === 7  && z === 5){  
     navigate("/win")
   }
 

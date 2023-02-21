@@ -132,9 +132,9 @@ const Interactive = () => {
 
   return (
     // <div className="w-full h-full bg-cover bg-center bg-warp-img flex justify-center">
-    <div className="w-full h-full bg-pink flex justify-center">
+    <div className="w-full h-full bg-cover bg-center bg-galaxy-img flex justify-center">
     <div className="absolute bottom-3/4 left-1/3 transform -translate-x-3/4 -translate-y-3/4">
-    <h1 className="drop-shadow-md text-primary md:text-[100px]">
+    <h1 className="drop-shadow-md text-white md:text-[100px]">
       Conjure
     </h1>
     </div>

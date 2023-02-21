@@ -34,6 +34,7 @@ export default function Map() {
           fade
           speed={1}
         />
+        {/* sky */}
         <Sky sunPosition={sky} />
         <ambientLight intensity={sky === night ? -1 : 1} />
         <FPV />

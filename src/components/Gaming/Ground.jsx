@@ -1,7 +1,7 @@
 import { usePlane } from "@react-three/cannon"
-
-
 import {stoneTexture} from "../images/textures"
+
+
 
 export const Ground = () => {
     
@@ -12,6 +12,7 @@ export const Ground = () => {
     stoneTexture.repeat.set(100,100)
 
     return (
+        <>
         <mesh ref = {ref}>
             <planeBufferGeometry attach="geometry" args = {[100,100]} />
             <meshStandardMaterial
@@ -21,5 +22,6 @@ export const Ground = () => {
         roughness={1}
         />
         </mesh>
+        </>
     )
 }

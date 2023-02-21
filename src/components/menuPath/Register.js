@@ -1,49 +1,42 @@
 
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Context from "../../Context/Context";
+import { UserContext } from "../../Context/userContext";
 
 export default function Register(props) {
   const navigate = useNavigate();
-  const {setUser} = useContext(Context)
+  const {setUser} = useContext(UserContext)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-
+  console.log(UserContext)
 
 
   const registerUser = async (e) => {
-    // console.log("submitting sign up form");
-    console.log(email,password,username)
-    console.log(setUser)
-    const userInfoPost = {
-      username,
-      email,
-      password,
-    };
-    const postReq = {
+
+  try {
+    const response = await fetch(
+      "http://localhost:3010/users/register", {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(userInfoPost),
-    };
-
-    const response = await fetch(
-      "http://localhost:3010/users/register",
-      postReq
-    );
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+      }),
+  });
     const data = await response.json();
-
-    if(data.user){
+    const verify = {user: data.user.username, token: data.token, userId: data.user.id}
+    localStorage.setItem("c-token", JSON.stringify(verify))
       setUser(data.user)
-      navigate("/play")
-    }else{
-      alert(data.detail)
+    } catch (err){
+      alert(err)
     }
   }
-
   const handleSubmit = (e) => {
       e.preventDefault()
       registerUser()
+      navigate("/play")
       cleanUp()
   }
 
