@@ -21,12 +21,13 @@ module.exports = {
         '2': '2 2 0%'
       },
       backgroundImage: {
+        'warp-img': "url('~/src/components/images/warp.gif')",
         'galaxy-img': "url('~/src/components/images/galaxy.jpg')",
         'stars-img': "url('~/src/components/images/stars.jpg')",
         'magic-img': "url('~/src/components/images/magic.jpg')",
         'load-img': "url('~/src/components/images/loading.gif')",
         gradient: "radial-gradient(circle, rgba(253,33,189,1) 28%, rgba(180,2,255,1) 72%);",
-        sunBG: "radial-gradient(circle, rgba(253,129,33,0.9220063025210083) 19%, rgba(209,55,17,1) 72%)",
+        pink: "radial-gradient(circle, rgba(255,0,254,1) 0%, rgba(85,70,252,1) 100%)",
         seaBG: "radial-gradient(circle, rgba(33,253,251,0.9220063025210083) 16%, rgba(23,101,209,1) 52%, rgba(21,71,230,1) 72%);",
         cyan: "linear-gradient(90deg, rgba(7,106,250,1) 32%, rgba(12,0,249,1) 73%);",
         dark: "radial-gradient(circle, rgba(214,0,255,1) 0%, rgba(168,26,199,1) 100%)"
