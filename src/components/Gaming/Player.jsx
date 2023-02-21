@@ -49,9 +49,12 @@ export const Player = () => {
     return api.position.subscribe((p) => (pos.current = p));
   }, [api.position]);
 
-  const x = pos.current[0]
-  // console.log(x)
-  if(x > 5){
+  const x = +pos.current[0].toFixed(0)
+  const y = +pos.current[1].toFixed(0)
+  const z = +pos.current[2].toFixed(0)
+  const xyz = [x,y,z]
+  console.log(xyz)
+  if(x > 4 && y > 6){
     navigate("/win")
   }
 

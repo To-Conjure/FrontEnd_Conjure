@@ -24,8 +24,10 @@ body,
 }
 
 body{
-  background: rgb(255,0,254);
-  background: radial-gradient(circle, rgba(255,0,254,1) 0%, rgba(85,70,252,1) 100%);
+  background-image: url("../src/components/images/warp.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #cccccc;
 }
 
 
