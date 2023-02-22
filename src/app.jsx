@@ -9,6 +9,7 @@ import HomeMenu  from "./components/Pages/HomeMenu";
 import Game from "./components/gaming/Game";
 import Tutorial from "./components/gaming/Tutorial";
 import Win from "./components/gaming/Win";
+import Lose from "./components/gaming/Lose";
 
 const App = () => {
     return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/game" element={<Game />} />
           <Route path="/tutorial" element={<Tutorial />} />
           <Route path="/win" element={<Win />} />
+          <Route path="/lose" element={<Lose />} />
           <Route path="*" element={<Error />} />
         </Routes>
     )

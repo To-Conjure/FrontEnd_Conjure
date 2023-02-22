@@ -11,11 +11,9 @@ module.exports = {
         primary: "blue",
         menuText: "#281236",
         menu: "#ff0ac2",
-        cover: "#ff0a65",
-        shadow: "red",
-        slide: "#f00",
-        border: "rgba(66, 6, 129, 1)",
+        red: "red",
         white: "white",
+        // yellow: ""
       },
       flex: {
         '2': '2 2 0%'
@@ -23,8 +21,9 @@ module.exports = {
       backgroundImage: {
         'warp-img': "url('~/src/components/images/warp.gif')",
         'galaxy-img': "url('~/src/components/images/galaxy.jpg')",
+        'cool-img': "url('~/src/components/images/cool.jpg')",
+        'explode-img': "url('~/src/components/images/galaxy.jpg')",
         'stars-img': "url('~/src/components/images/stars.jpg')",
-        'magic-img': "url('~/src/components/images/magic.jpg')",
         'load-img': "url('~/src/components/images/loading.gif')",
         gradient: "radial-gradient(circle, rgba(253,33,189,1) 28%, rgba(180,2,255,1) 72%);",
         pink: "radial-gradient(circle, rgba(255,0,254,1) 0%, rgba(85,70,252,1) 100%)",
@@ -33,14 +32,10 @@ module.exports = {
         dark: "radial-gradient(circle, rgba(214,0,255,1) 0%, rgba(168,26,199,1) 100%)"
       },
       animation: {
-        cover: "cover 0.5s forwards ease-out",
         shadow:"shadow 0.5s forwards ease-out",
         slide: "slide 5s infinite running ease-out ease-in-out"
       },
       keyframes: {
-        cover: {
-          "100%": { width: "100%" },
-        },
         shadow: {
           "100%": { width: "100%" },
         },

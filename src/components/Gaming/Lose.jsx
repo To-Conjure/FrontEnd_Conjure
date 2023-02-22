@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useRef} from "react";
 import { useNavigate } from "react-router-dom";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
@@ -8,17 +8,15 @@ import {
   ContactShadows,
   useFBX,
 } from "@react-three/drei";
-import { UserContext } from "../../Context/userContext";
 
 
-//Model
-//Spaceship
+
 const Spaceship = () => {
-  const fbx = useFBX("/fbxAssets/Spaceship.fbx");
-  return <primitive object={fbx} scale={0.8} rotation={[2, -0.3, 0]} />;
+  const fbx = useFBX("/fbxAssets/viper.fbx");
+  return <primitive object={fbx} scale={0.8} rotation={[5, -1, 5.5]} />;
 };
 
-//Movement
+
 const ModelAnimated = (props) => {
   const ref = useRef()
 
@@ -32,12 +30,11 @@ const ModelAnimated = (props) => {
 
   return (
     <group ref={ref} {...props} dispose={null}>
-      <Spaceship/>
+            <Spaceship/>
     </group>
   )
 }
 const MenuModel = () => {
-  const textStyle = "text-white mt-10 md:text-[50px] font-bold";
   return (
       <Canvas shadows dpr={[2, 3]} camera={{ position: [0, 0, 0], fov: 90 }}>
         <PerspectiveCamera
@@ -46,9 +43,9 @@ const MenuModel = () => {
           position={[0, 0, 15]}
           focusDistance={[0, 0]}
         />
-        <ambientLight color="pink" intensity={0.5} />
+        <ambientLight color="blue" intensity={0.5} />
         <spotLight
-          position={[100, 10, 10]}
+          position={[1, 50, 10]}
           angle={0.15}
           penumbra={1}
           shadow-mapSize={[512, 512]}
@@ -59,10 +56,10 @@ const MenuModel = () => {
           config={{ mass: 2, tension: 500 }}
           snap={{ mass: 4, tension: 1500 }}
           rotation={[0, 0.3, 0]}
-          polar={[-Math.PI / 4, Math.PI / 4]}
+          polar={[-Math.PI / 6, Math.PI / 4]}
           azimuth={[-Math.PI / 6, Math.PI / 6]}
         >
-         <ModelAnimated/>
+        <ModelAnimated/>
         </PresentationControls>
         <ContactShadows
           position={[0, -1.4, 0]}
@@ -76,42 +73,28 @@ const MenuModel = () => {
   );
 };
 
-const HomeMenu = () => {
+export default function Lose() {
   const navigate = useNavigate();
-  const textStyle = "text-red mt-10 md:text-[50px] font-bold";
-  const {user} = useContext(UserContext)
-  const name = user ? `Welcome ${user.username}` : "Welcome Crewmate"
-  const navPage = (e) => {
-    const path = e.target.innerText.toLowerCase();
-    navigate(`/${path}`);
-  };
+  const textStyle = "text-white mt-40 md:text-[120px] text-center font-bold";
+
 
   return (
-      <div className="w-full h-full bg-cover bg-center bg-warp-img flex justify-center">
+      <div className="w-full h-full bg-cover bg-center-img bg-galaxy-img flex justify-center">
+    {/* // <div className="w-full h-full bg-cool-img flex justify-center"> */}
       <MenuModel /> 
-      <div className="absolute top-[20px] left-[20px] md:top-[30px] md:left-[50px]">
-        <h1 className="drop-shadow-md text-red md:text-[120px]">
-          <br />
-          <br />
-          Conjure
-        </h1>
-        <br />
-        <br />
+      <div className="absolute bottom-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <section>
-        <p className={textStyle}>
-            {name}
+          <p className={textStyle}>
+            Game Over
           </p>
-          <p className={textStyle} onClick={() => navigate("/game")}>
-            Enter Game
+          <p className={textStyle} onClick ={() => navigate("/game")}>
+            Retry
           </p>
-          <p className={textStyle} onClick={navPage}>
-            Tutorial
+          <p className={textStyle} onClick ={() => navigate("/")}>
+            Home
           </p>
         </section>
       </div>
       </div>
   );
 };
-
-
-export default HomeMenu;

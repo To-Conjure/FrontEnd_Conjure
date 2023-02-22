@@ -1,11 +1,11 @@
 
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Context from "../../Context/Context";
+import { UserContext } from "../../Context/userContext";
 
-export default function Login(props) {
+export default function Register(props) {
   const navigate = useNavigate();
-  const {setUser} = useContext(Context)
+  const {setUser} = useContext(UserContext)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -13,37 +13,30 @@ export default function Login(props) {
 
 
   const loginUser = async (e) => {
-    // console.log("submitting sign up form");
-    console.log(email,password,username)
-    console.log(setUser)
-    const userInfoPost = {
-      username,
-      email,
-      password,
-    };
-    const postReq = {
+
+  try {
+    const response = await fetch(
+      "http://localhost:3010/users/login", {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(userInfoPost),
-    };
-
-    const response = await fetch(
-      "http://localhost:3010/users/register",
-      postReq
-    );
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+      }),
+  });
     const data = await response.json();
-
-    if(data.user){
+    const verify = {user: data.user.username, token: data.token, userId: data.user.id}
+    localStorage.setItem("c-token", JSON.stringify(verify))
       setUser(data.user)
-      navigate("/play")
-    }else{
-      alert(data.detail)
+    } catch (err){
+      alert(err)
     }
   }
-
   const handleSubmit = (e) => {
       e.preventDefault()
       loginUser()
+      navigate("/play")
       cleanUp()
   }
 
@@ -59,7 +52,7 @@ export default function Login(props) {
       <form className="bg-grey-lighter">
         <div className="container max-w-sm mx-auto flex grid place-items-start md:place-items-center">
           <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-            <h1 className="mb-8 text-4xl text-center">Login</h1>
+            <h1 className="mb-8 text-4xl text-center">Register</h1>
             <input
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -103,9 +96,8 @@ export default function Login(props) {
           </div>
 
           <div className="text-grey-dark mt-6 text-white">
-            Need an Account?&nbsp;&nbsp;
+            Already have an account?&nbsp;&nbsp;
             <a className="no-underline text-center border-b border-blue text-white">
-              Register
             </a>
           </div>
         </div>

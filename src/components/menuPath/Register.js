@@ -9,7 +9,7 @@ export default function Register(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  console.log(UserContext)
+
 
 
   const registerUser = async (e) => {
@@ -36,7 +36,6 @@ export default function Register(props) {
   const handleSubmit = (e) => {
       e.preventDefault()
       registerUser()
-      navigate("/play")
       cleanUp()
   }
 

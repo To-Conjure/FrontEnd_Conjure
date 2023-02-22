@@ -8,18 +8,17 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { UserProvider } from "./Context/userContext";
 
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
-    <UserProvider>
     <BrowserRouter>
+      <UserProvider>
         <Suspense fallback={null}>
           <App />
           <Footer />
         </Suspense>
         <Loader />
+      </UserProvider>
     </BrowserRouter>
-    </UserProvider>
   </>
 );
