@@ -40,7 +40,7 @@ const Hologram = () => {
 // music toggle
 const backgroundMusic = (e) => {
   if (!isMusic) {
-      audioBG.volume = 0.3;
+      audioBG.volume = 0.5;
       audioBG.loop = true;
       audioBG.play();
       isMusic = true;
@@ -139,7 +139,6 @@ const CustomMenu = (props) => {
 };
 const Interactive = () => {
   //close page  
-  const navigate = useNavigate()
 
   const closePage = () => {
     setClickedMenu(null);
@@ -212,7 +211,7 @@ const Interactive = () => {
 
           {/* closeButton appearence */}
           <div
-            className={`md:max-w-[80%] md:p-10 text-black w-full transition-opacity duration-1000 opacity-0 ${
+            className={`w-full h-full md:max-w-[80%] text-black w-full transition-opacity duration-1000 opacity-0 ${
               time && "delay-600 opacity-100"
             }`}
           >

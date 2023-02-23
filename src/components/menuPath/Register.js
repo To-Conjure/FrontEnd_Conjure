@@ -1,10 +1,11 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import userContext from "../../Context/Context";
+import UserContext from "../../Context/userContext";
 
 export default function Register(props) {
+  console.log(UserContext)
   const navigate = useNavigate();
-  const { setUser } = useContext(userContext);
+  const { setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -21,7 +22,6 @@ export default function Register(props) {
         }),
       });
       const data = await response.json();
-      console.log(data)
       const verify = {
         user: data.createdUser.username,
         token: data.token,
@@ -33,13 +33,11 @@ export default function Register(props) {
       console.log(err)
       alert(err);
     }
-    console.log("hi")
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username,email,password,)
     registerUser();
-    navigate("../login")
+    navigate("/login")
     cleanUp();
   };
 

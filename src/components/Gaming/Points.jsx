@@ -4,9 +4,10 @@ import "./game.css"
 
 const Points = () => {
     const points = useStore(state => state.points)
+    const style = "absolute text-red text-[120px] inset-x-0 z-10"
     return (
         <div>
-        <div className="absolute text-[120px] inset-x-0 z-10">Total Points {points}</div>
+            <div className= {style}>Total Points {points}</div>
         </div>
     )
   };

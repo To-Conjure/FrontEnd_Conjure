@@ -78,7 +78,7 @@ const MenuModel = () => {
 
 export default function Win() {
   const navigate = useNavigate();
-  const textStyle = "text-white mt-30 md:text-[120px] text-center font-bold";
+  const textStyle = "text-white mt-20 md:text-[120px] text-center font-bold";
   const removePoint = useStore(state => state.removePoint)
   const points = useStore(state => state.points)
 
@@ -87,10 +87,7 @@ export default function Win() {
       <MenuModel /> 
         <section>
           <p className={textStyle}>
-            YOU&nbsp;&nbsp;WON
-          </p>
-          <p className={textStyle}>
-            SCORE: {points}
+            SCORE:{points}
           </p>
           <p className={textStyle} onClick ={() => (removePoint(),navigate("/game"))}>
             RETRY
