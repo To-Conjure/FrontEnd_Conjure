@@ -9,12 +9,12 @@ export const Ground = () => {
         rotation: [-Math.PI/2,0,0], position:[0,-100,1]
     }))
 
-    lavaTexture.repeat.set(100,100)
+    lavaTexture.repeat.set(1000,1000)
 
     return (
         <>
         <mesh ref = {ref}>
-            <planeBufferGeometry attach="geometry" args = {[100,100]} />
+            <planeBufferGeometry attach="geometry" args = {[1000,1000]} />
             <meshStandardMaterial
         attach="material"
         color="orange"

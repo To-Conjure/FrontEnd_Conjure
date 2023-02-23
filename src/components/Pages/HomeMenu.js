@@ -9,9 +9,13 @@ import {
   useFBX,
 } from "@react-three/drei";
 import { UserContext } from "../../Context/userContext";
+import warp from '../music/warp.mp3'
+import flight from '../music/flight.mp3'
+
+const warpSFX = new Audio(warp);
+const flightSFX = new Audio(flight);
 
 
-//Model
 //Spaceship
 const Spaceship = () => {
   const fbx = useFBX("/fbxAssets/Spaceship.fbx");
@@ -46,7 +50,7 @@ const MenuModel = () => {
           position={[0, 0, 15]}
           focusDistance={[0, 0]}
         />
-        <ambientLight color="pink" intensity={0.5} />
+        <ambientLight color="blue" intensity={0.5} />
         <spotLight
           position={[100, 10, 10]}
           angle={0.15}
@@ -78,34 +82,37 @@ const MenuModel = () => {
 
 const HomeMenu = () => {
   const navigate = useNavigate();
-  const textStyle = "text-red mt-10 md:text-[50px] font-bold";
+  const textStyle = "text-cyan mt-10 md:text-[50px] font-bold";
   const {user} = useContext(UserContext)
-  const name = user ? `Welcome ${user.username}` : "Welcome Crewmate"
-  const navPage = (e) => {
-    const path = e.target.innerText.toLowerCase();
-    navigate(`/${path}`);
-  };
-
+  console.log(UserContext)
+  
+function takeFlight (e){
+  flightSFX.volume = 1;
+  flightSFX.loop = false;
+  flightSFX.play();
+  const path = e.target.innerText.toLowerCase().substring(6);
+  navigate(`/${path}`);
+}
   return (
-      <div className="w-full h-full bg-cover bg-center bg-warp-img flex justify-center">
+      <div className="w-full h-full bg-cover bg-center bg-warping-img flex justify-center">
       <MenuModel /> 
       <div className="absolute top-[20px] left-[20px] md:top-[30px] md:left-[50px]">
-        <h1 className="drop-shadow-md text-red md:text-[120px]">
+        <h1 className="text-cyan md:text-[120px] drop-shadow-white">
           <br />
           <br />
-          Conjure
+          CONJURE
         </h1>
         <br />
         <br />
         <section>
         <p className={textStyle}>
-            {name}
+            {user ? `WELCOME ${user.username}` : "WELCOME CAPTAIN"}
           </p>
-          <p className={textStyle} onClick={() => navigate("/game")}>
-            Enter Game
+          <p className={textStyle} onClick={takeFlight}>
+            ENTER GAME
           </p>
-          <p className={textStyle} onClick={navPage}>
-            Tutorial
+          <p className={textStyle} onClick={takeFlight}>
+            ENTER TUTORIAL
           </p>
         </section>
       </div>

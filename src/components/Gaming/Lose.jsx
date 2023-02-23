@@ -8,12 +8,14 @@ import {
   ContactShadows,
   useFBX,
 } from "@react-three/drei";
+import flight from '../music/flight.mp3'
+const flightSFX = new Audio(flight);
 
 
 
 const Spaceship = () => {
-  const fbx = useFBX("/fbxAssets/viper.fbx");
-  return <primitive object={fbx} scale={0.8} rotation={[5, -1, 5.5]} />;
+  const fbx = useFBX("/fbxAssets/spaceship.fbx");
+  return <primitive object={fbx} scale={0.9} rotation={[11, -19, 3]} />;
 };
 
 
@@ -40,12 +42,12 @@ const MenuModel = () => {
         <PerspectiveCamera
           makeDefault
           fov={70}
-          position={[0, 0, 15]}
+          position={[3, 7, 14]}
           focusDistance={[0, 0]}
         />
-        <ambientLight color="blue" intensity={0.5} />
+        <ambientLight color="red" intensity={0.5} />
         <spotLight
-          position={[1, 50, 10]}
+          position={[1, 40, 10]}
           angle={0.15}
           penumbra={1}
           shadow-mapSize={[512, 512]}
@@ -75,26 +77,22 @@ const MenuModel = () => {
 
 export default function Lose() {
   const navigate = useNavigate();
-  const textStyle = "text-white mt-40 md:text-[120px] text-center font-bold";
-
+  const textStyle = "text-menu mt-40 md:text-[120px] text-center mb-15";
 
   return (
-      <div className="w-full h-full bg-cover bg-center-img bg-galaxy-img flex justify-center">
-    {/* // <div className="w-full h-full bg-cool-img flex justify-center"> */}
-      <MenuModel /> 
-      <div className="absolute bottom-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="w-full h-full bg-cover bg-center bg-warp-img bg-fixed flex justify-center">
         <section>
           <p className={textStyle}>
-            Game Over
+            Game&nbsp;Over
           </p>
-          <p className={textStyle} onClick ={() => navigate("/game")}>
+          <p className={textStyle} onClick ={(e) => (flightSFX.play(),navigate("/game"))}>
             Retry
           </p>
-          <p className={textStyle} onClick ={() => navigate("/")}>
+          <p className={textStyle} onClick ={(e) => (flightSFX.play(),navigate("/"))}>
             Home
           </p>
         </section>
-      </div>
+      <MenuModel /> 
       </div>
   );
 };

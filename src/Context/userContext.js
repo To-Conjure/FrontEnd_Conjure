@@ -5,8 +5,6 @@ export const UserContext = createContext({});
 export const UserProvider = ( props ) => {
   const [user, setUser] = useState(undefined);
 
-
- 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem('c-token'))
       if(token) {

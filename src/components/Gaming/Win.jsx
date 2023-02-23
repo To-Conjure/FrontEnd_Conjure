@@ -9,13 +9,20 @@ import {
   useFBX,
 } from "@react-three/drei";
 
+import win from '../music/winner.wav'
+const winSFX = new Audio(win);
 
-
+// function winnerSound(){
+//   winSFX.volume = 1;
+//   winSFX.loop = false;
+//   winSFX.play();
+// }
+// winnerSound()
 //Model
 //Spaceship
 const Spaceship = () => {
-  const fbx = useFBX("/fbxAssets/viper.fbx");
-  return <primitive object={fbx} scale={0.8} rotation={[5, -1, 5.5]} />;
+  const fbx = useFBX("/fbxAssets/cube.fbx");
+  return <primitive object={fbx} scale={0.05} rotation={[5, -1, 5.5]} />;
 };
 
 //Movement
@@ -37,7 +44,7 @@ const ModelAnimated = (props) => {
   )
 }
 const MenuModel = () => {
-  const textStyle = "text-white mt-10 md:text-[50px] font-bold";
+
   return (
       <Canvas shadows dpr={[2, 3]} camera={{ position: [0, 0, 0], fov: 90 }}>
         <PerspectiveCamera
@@ -46,7 +53,7 @@ const MenuModel = () => {
           position={[0, 0, 15]}
           focusDistance={[0, 0]}
         />
-        <ambientLight color="blue" intensity={0.5} />
+        <ambientLight color="gold" intensity={0.5} />
         <spotLight
           position={[1, 50, 10]}
           angle={0.15}
@@ -58,14 +65,14 @@ const MenuModel = () => {
           global
           config={{ mass: 2, tension: 500 }}
           snap={{ mass: 4, tension: 1500 }}
-          rotation={[0, 0.3, 0]}
+          rotation={[0, 0.5, 0]}
           polar={[-Math.PI / 6, Math.PI / 4]}
           azimuth={[-Math.PI / 6, Math.PI / 6]}
         >
               <ModelAnimated/>
         </PresentationControls>
         <ContactShadows
-          position={[0, -1.4, 0]}
+          position={[-10, -1.4, 0]}
           opacity={0.35}
           scale={10}
           blur={2.5}
@@ -82,21 +89,19 @@ export default function Win() {
 
 
   return (
-      <div className="w-full h-full bg-cover bg-center bg-galaxy-img flex justify-center">
+      <div className="w-full h-full bg-cover bg-center bg-galaxy-img flex justify-items">
       <MenuModel /> 
-      <div className="absolute bottom-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <section>
           <p className={textStyle}>
-            You Won
+            YOU&nbsp;&nbsp;WON
           </p>
           <p className={textStyle} onClick ={() => navigate("/game")}>
-            Retry
+            RETRY?
           </p>
           <p className={textStyle} onClick ={() => navigate("/")}>
-            Home
+            HOME
           </p>
         </section>
-      </div>
       </div>
   );
 };

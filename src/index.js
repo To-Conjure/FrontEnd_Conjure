@@ -7,6 +7,7 @@ import { Footer } from "./components/Pages/Footer";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { UserProvider } from "./Context/userContext";
+// import ToggleMusic from "./components/Pages/ToggleMusic";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

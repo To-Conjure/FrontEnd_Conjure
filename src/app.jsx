@@ -6,10 +6,10 @@ import Register from "./components/menuPath/Register";
 import Interactive from "./components/Pages/Interactive";
 import Error from "./components/menuPath/Error";
 import HomeMenu  from "./components/Pages/HomeMenu";
-import Game from "./components/gaming/Game";
-import Tutorial from "./components/gaming/Tutorial";
-import Win from "./components/gaming/Win";
-import Lose from "./components/gaming/Lose";
+import Game from "./components/Gaming/Game";
+import Tutorial from "./components/Gaming/Tutorial";
+import Win from "./components/Gaming/Win";
+import Lose from "./components/Gaming/Lose";
 
 const App = () => {
     return (

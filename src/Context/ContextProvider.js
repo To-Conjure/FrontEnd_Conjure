@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import Context from "./Context";
 
 const ContextProvider = ({ children }) => {
-    const [user, setUser] = useState('');
+    const [isMusic, setMusic] = useState(false)
     const values = {
-        user,
-        setUser,
+        isMusic,
+        setMusic
     };
   
     return (

@@ -12,13 +12,21 @@ import Login from "../menuPath/Login";
 import Register from "../menuPath/Register";
 import { useNavigate } from "react-router-dom";
 
+import soundON from '../music/sound-on.png'
+import soundOFF from '../music/sound-off.png'
+import battleMusic from '../music/galatic.wav'
+
+
+const audioBG = new Audio(battleMusic);
+let isMusic = false;
+
 const menuItem = [
   {
-    label: "Login",
+    label: "LOGIN",
     content: <Login />,
   },
   {
-    label: "Register",
+    label: "REGISTER",
     content: <Register/>,
   },
 ];
@@ -26,9 +34,24 @@ const menuItem = [
 
 const Hologram = () => {
   const fbx = useFBX("/fbxAssets/holo.fbx");
-  return <primitive object={fbx} scale={0.0005} rotation={[2.2, -0.3, 0]} />;
+  return <primitive object={fbx} scale={0.0005} rotation={[2, -0.3, 0]} />;
 };
 
+// music toggle
+const backgroundMusic = (e) => {
+  if (!isMusic) {
+      audioBG.volume = 0.3;
+      audioBG.loop = true;
+      audioBG.play();
+      isMusic = true;
+      e.target.src = soundON;
+  }
+  else {
+      audioBG.pause();
+      isMusic = false;
+      e.target.src = soundOFF;
+  }
+}
 
 const CustomMenu = (props) => {
   const navigate = useNavigate()
@@ -51,7 +74,8 @@ const CustomMenu = (props) => {
   });
   //transitions scene
   const menuClicked = (item) => {
-    const path = item.label.toLowerCase()
+    // isMusic && clickSoundEffect();
+    // const path = item.label.toLowerCase()
     props.setClickedMenu(item);
     setTimeout(() => {
       props.setTime(true);
@@ -97,7 +121,7 @@ const CustomMenu = (props) => {
             >
               <div className={menuStyle} onClick = {() => navigate("/play")}>
                 <div className={animatedStyle}></div>
-                Play Now
+                PLAY NOW
               </div>
             </Html>
           </mesh>
@@ -134,8 +158,8 @@ const Interactive = () => {
     // <div className="w-full h-full bg-cover bg-center bg-warp-img flex justify-center">
     <div className="w-full h-full bg-cover bg-center bg-galaxy-img flex justify-center">
     <div className="absolute bottom-3/4 left-1/3 transform -translate-x-3/4 -translate-y-3/4">
-    <h1 className="drop-shadow-md text-white md:text-[100px]">
-      Conjure
+    <h1 className="text-[100px] font-extrabold text-pink-600 drop-shadow-md shadow-red-600/50">
+       CONJURE
     </h1>
     </div>
       <div className={menuClickedStyle}>
@@ -184,11 +208,11 @@ const Interactive = () => {
       </div>
       {/* menus bg color */}
       {clickedMenu && (
-        <div className="absolute w-full min-h-full bg-black top-0 z-20 flex justify-center">
+        <div className="absolute w-full min-h-full bg-cover bg-center bg-space-img top-0 z-20 flex justify-center">
 
           {/* closeButton appearence */}
           <div
-            className={`p-10 mt-8 md:mt-10 md:max-w-[40%] md:p-20 transition-opacity duration-1000 opacity-0 ${
+            className={`md:max-w-[80%] md:p-10 text-black w-full transition-opacity duration-1000 opacity-0 ${
               time && "delay-600 opacity-100"
             }`}
           >
@@ -208,6 +232,7 @@ const Interactive = () => {
 
       {/* transition effects */}
        <div className={`absolute block w-full bg-cover bg-center bg-load-img z-20 transition-all duration-500 ease-in ${clickedMenu ? 'bottom-0 h-full' : 'h-0'}  ${time && 'delay-[unset] top-0 h-0'}`}></div>
+       <img id="musicTrigger" alt="sound icon" src={soundOFF} className="absolute opacity-80 w-[40px] h-[40px] z-10 bottom-0 right-[calc(50vw-20px)] md:top-[20px] left-[20px] cursor-pointer" onClick={(e) => backgroundMusic(e)} />
     </div>
   );
 };
