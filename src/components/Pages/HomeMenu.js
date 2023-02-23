@@ -8,13 +8,12 @@ import {
   ContactShadows,
   useFBX,
 } from "@react-three/drei";
-import { UserContext } from "../../Context/userContext";
-import warp from '../music/warp.mp3'
-import flight from '../music/flight.mp3'
+import UserContext from "../../Context/userContext";
+import warp from "../music/warp.mp3";
+import flight from "../music/flight.mp3";
 
 const warpSFX = new Audio(warp);
 const flightSFX = new Audio(flight);
-
 
 //Spaceship
 const Spaceship = () => {
@@ -24,7 +23,7 @@ const Spaceship = () => {
 
 //Movement
 const ModelAnimated = (props) => {
-  const ref = useRef()
+  const ref = useRef();
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
@@ -36,66 +35,66 @@ const ModelAnimated = (props) => {
 
   return (
     <group ref={ref} {...props} dispose={null}>
-      <Spaceship/>
+      <Spaceship />
     </group>
-  )
-}
+  );
+};
 const MenuModel = () => {
   const textStyle = "text-white mt-10 md:text-[50px] font-bold";
   return (
-      <Canvas shadows dpr={[2, 3]} camera={{ position: [0, 0, 0], fov: 90 }}>
-        <PerspectiveCamera
-          makeDefault
-          fov={70}
-          position={[0, 0, 15]}
-          focusDistance={[0, 0]}
-        />
-        <ambientLight color="blue" intensity={0.5} />
-        <spotLight
-          position={[100, 10, 10]}
-          angle={0.15}
-          penumbra={1}
-          shadow-mapSize={[512, 512]}
-          castShadow
-        />
-        <PresentationControls
-          global
-          config={{ mass: 2, tension: 500 }}
-          snap={{ mass: 4, tension: 1500 }}
-          rotation={[0, 0.3, 0]}
-          polar={[-Math.PI / 4, Math.PI / 4]}
-          azimuth={[-Math.PI / 6, Math.PI / 6]}
-        >
-         <ModelAnimated/>
-        </PresentationControls>
-        <ContactShadows
-          position={[0, -1.4, 0]}
-          opacity={0.35}
-          scale={10}
-          blur={2.5}
-          far={4}
-        />
-        <Environment preset="city" />
-      </Canvas>
+    <Canvas shadows dpr={[2, 3]} camera={{ position: [0, 0, 0], fov: 90 }}>
+      <PerspectiveCamera
+        makeDefault
+        fov={70}
+        position={[0, 0, 15]}
+        focusDistance={[0, 0]}
+      />
+      <ambientLight color="blue" intensity={0.5} />
+      <spotLight
+        position={[100, 10, 10]}
+        angle={0.15}
+        penumbra={1}
+        shadow-mapSize={[512, 512]}
+        castShadow
+      />
+      <PresentationControls
+        global
+        config={{ mass: 2, tension: 500 }}
+        snap={{ mass: 4, tension: 1500 }}
+        rotation={[0, 0.3, 0]}
+        polar={[-Math.PI / 4, Math.PI / 4]}
+        azimuth={[-Math.PI / 6, Math.PI / 6]}
+      >
+        <ModelAnimated />
+      </PresentationControls>
+      <ContactShadows
+        position={[0, -1.4, 0]}
+        opacity={0.35}
+        scale={10}
+        blur={2.5}
+        far={4}
+      />
+      <Environment preset="city" />
+    </Canvas>
   );
 };
 
 const HomeMenu = () => {
   const navigate = useNavigate();
   const textStyle = "text-cyan mt-10 md:text-[50px] font-bold";
-  const {user} = useContext(UserContext)
-  console.log(UserContext)
-  
-function takeFlight (e){
-  flightSFX.volume = 1;
-  flightSFX.loop = false;
-  flightSFX.play();
-  const path = e.target.innerText.toLowerCase().substring(6);
-  navigate(`/${path}`);
-}
+  const { user } = useContext(UserContext);
+  console.log(user,"here");
+
+  function takeFlight(e) {
+    flightSFX.volume = 1;
+    flightSFX.loop = false;
+    flightSFX.play();
+    const path = e.target.innerText.toLowerCase().substring(6);
+    navigate(`/${path}`);
+  }
   return (
-      <div className="w-full h-full bg-cover bg-center bg-warping-img flex justify-center">
-      <MenuModel /> 
+    <div className="w-full h-full bg-cover bg-center bg-warping-img flex justify-center">
+      <MenuModel />
       <div className="absolute top-[20px] left-[20px] md:top-[30px] md:left-[50px]">
         <h1 className="text-cyan md:text-[120px] drop-shadow-white">
           <br />
@@ -105,8 +104,8 @@ function takeFlight (e){
         <br />
         <br />
         <section>
-        <p className={textStyle}>
-            {user ? `WELCOME ${user.username}` : "WELCOME CAPTAIN"}
+          <p className={textStyle}>
+            {user ? `WELCOME ${user.toUpperCase()}` : "WELCOME CAPTAIN"}
           </p>
           <p className={textStyle} onClick={takeFlight}>
             ENTER GAME
@@ -116,9 +115,8 @@ function takeFlight (e){
           </p>
         </section>
       </div>
-      </div>
+    </div>
   );
 };
-
 
 export default HomeMenu;

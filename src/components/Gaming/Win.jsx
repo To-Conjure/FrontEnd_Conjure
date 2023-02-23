@@ -88,7 +88,9 @@ export default function Win() {
         <section>
           <p className={textStyle}>
             YOU&nbsp;&nbsp;WON
-            SCORE: {points} pts
+          </p>
+          <p className={textStyle}>
+            SCORE: {points}
           </p>
           <p className={textStyle} onClick ={() => (removePoint(),navigate("/game"))}>
             RETRY
