@@ -7,11 +7,12 @@ import { FPV } from "./FPV";
 import "./game.css"
 import { Cubes } from "./Cubes";
 import SkyTime from "./SkyTime";
+import Points from "./Points";
+export default function Map(props) {
 
-
-export default function Map() {
   return (
     <>
+      <Points/>
       <Canvas>
         <Stars
           radius={100}
@@ -29,11 +30,9 @@ export default function Map() {
           <Player />
           <Cubes/>
           <Ground />
-          
         </Physics>
       </Canvas>
-      <div className="absolute centered cursor ">+</div>
-
+      <div className="absolute centered cursor">+</div>
     </>
   );
 }

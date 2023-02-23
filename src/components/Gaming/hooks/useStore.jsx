@@ -62,6 +62,17 @@ export const useStore = create((set) => ({
 			]
 		}))
 	},
-    
-}))
+    removeCube: (x, y, z) => {
+		set((prev) => ({
+			cubes: prev.cubes.filter(cube => {
+				const [X, Y, Z] = cube.pos
+				return X !== x || Y !== y || Z !== z
+			})
+
+		}))
+	},
+    points: 0,
+    addPoint: () => set((state) => ({ points: state.points + 1 })),
+    removePoint: () => set({ points: 0 }),
+  }))
 

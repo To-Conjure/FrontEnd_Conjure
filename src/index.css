@@ -24,12 +24,12 @@ body,
   padding: 0;
 }
 
-/* body{
+body{
   background-image: url("../src/components/images/warp.gif");
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #cccccc;
-} */
+}
 
 
 /* .load {

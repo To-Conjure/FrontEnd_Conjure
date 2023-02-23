@@ -17,6 +17,7 @@ module.exports = {
         '5xl': '3.052rem',
       },
       colors: {
+        yellow: "gold",
         primary: "blue",
         menuText: "#281236",
         cover: "#ff0a65",
@@ -24,8 +25,6 @@ module.exports = {
         border: "rgba(66, 6, 129, 1)",
         menu: "#ff0ac2",
         red: "red",
-        white: "white",
-        yellow: "gold",
         cyan: "cyan",
         orange: "orange",
       },

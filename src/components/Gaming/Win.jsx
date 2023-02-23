@@ -8,16 +8,9 @@ import {
   ContactShadows,
   useFBX,
 } from "@react-three/drei";
+import { useStore } from "./hooks/useStore";
 
-import win from '../music/winner.wav'
-const winSFX = new Audio(win);
 
-// function winnerSound(){
-//   winSFX.volume = 1;
-//   winSFX.loop = false;
-//   winSFX.play();
-// }
-// winnerSound()
 //Model
 //Spaceship
 const Spaceship = () => {
@@ -69,7 +62,7 @@ const MenuModel = () => {
           polar={[-Math.PI / 6, Math.PI / 4]}
           azimuth={[-Math.PI / 6, Math.PI / 6]}
         >
-              <ModelAnimated/>
+        <ModelAnimated/>
         </PresentationControls>
         <ContactShadows
           position={[-10, -1.4, 0]}
@@ -86,7 +79,8 @@ const MenuModel = () => {
 export default function Win() {
   const navigate = useNavigate();
   const textStyle = "text-white mt-30 md:text-[120px] text-center font-bold";
-
+  const removePoint = useStore(state => state.removePoint)
+  const points = useStore(state => state.points)
 
   return (
       <div className="w-full h-full bg-cover bg-center bg-galaxy-img flex justify-items">
@@ -94,11 +88,12 @@ export default function Win() {
         <section>
           <p className={textStyle}>
             YOU&nbsp;&nbsp;WON
+            SCORE: {points} pts
           </p>
-          <p className={textStyle} onClick ={() => navigate("/game")}>
-            RETRY?
+          <p className={textStyle} onClick ={() => (removePoint(),navigate("/game"))}>
+            RETRY
           </p>
-          <p className={textStyle} onClick ={() => navigate("/")}>
+          <p className={textStyle} onClick ={() => (removePoint(),navigate("/"))}>
             HOME
           </p>
         </section>
