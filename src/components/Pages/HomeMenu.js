@@ -9,8 +9,8 @@ import {
   useFBX,
 } from "@react-three/drei";
 import UserContext from "../../Context/userContext";
-import warp from "../music/warp.mp3";
-import flight from "../music/flight.mp3";
+import warp from "../sounds/warp.mp3";
+import flight from "../sounds/flight.mp3";
 
 const warpSFX = new Audio(warp);
 const flightSFX = new Audio(flight);

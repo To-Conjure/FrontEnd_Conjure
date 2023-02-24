@@ -8,7 +8,7 @@ import {
   ContactShadows,
   useFBX,
 } from "@react-three/drei";
-import flight from '../music/flight.mp3'
+import flight from '../sounds/flight.mp3'
 const flightSFX = new Audio(flight);
 
 
@@ -77,7 +77,7 @@ const MenuModel = () => {
 
 export default function Lose() {
   const navigate = useNavigate();
-  const textStyle = "text-menu mt-40 md:text-[120px] text-center mb-15";
+  const textStyle = "text-menu md:text-[120px] text-center mb-25";
 
   return (
       <div className="w-full h-full bg-cover bg-center bg-warp-img bg-fixed flex justify-center">

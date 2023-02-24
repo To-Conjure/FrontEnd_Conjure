@@ -6,7 +6,7 @@ export default function UserProvider( props ) {
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem('c-token'))
-      if(token && token.user.id) {
+      if(token?.user?.id) {
         console.log(token)
           fetch(`http://localhost:3010/users/${token.user.id}`).then((res) => res.json()).then((json) => {
             setUser(json)

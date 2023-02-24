@@ -32,13 +32,6 @@ body{
 }
 
 
-/* .load {
-  background-image: url("./components/images/loading.gif");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-} */
-
 #root {
   height: 100vh;
   /* font-family: 'Roboto', sans-serif; */

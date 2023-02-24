@@ -1,10 +1,9 @@
-// import Timer from "./Timer"
-// const Tutorial = () => {
-//     return (
-//         <>
-//         <Timer/>
-//         </>
-//     )    
-// }
+const Tutorial = () => {
+  return (
+    <>
+      {/* <div className="w-full h-full bg-cover bg-center bg-tutorial-img flex justify-items"/> */}
+    </>
+  );
+};
 
-// export default Tutorial
+export default Tutorial;

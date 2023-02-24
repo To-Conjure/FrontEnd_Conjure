@@ -80,7 +80,7 @@ export default function Win() {
   const navigate = useNavigate();
   const textStyle = "text-white mt-20 md:text-[120px] text-center font-bold";
   const removePoint = useStore(state => state.removePoint)
-  const points = useStore(state => state.points)
+  const points = useStore(state => state.points + 5)
 
   return (
       <div className="w-full h-full bg-cover bg-center bg-galaxy-img flex justify-items">

@@ -12,10 +12,10 @@ import Login from "../menuPath/Login";
 import Register from "../menuPath/Register";
 import { useNavigate } from "react-router-dom";
 
-import soundON from '../music/sound-on.png'
-import soundOFF from '../music/sound-off.png'
-import battleMusic from '../music/galatic.wav'
-
+import soundON from '../sounds/sound-on.png'
+import soundOFF from '../sounds/sound-off.png'
+import battleMusic from '../sounds/galatic.wav'
+import { nanoid } from "nanoid";
 
 const audioBG = new Audio(battleMusic);
 let isMusic = false;
@@ -187,6 +187,7 @@ const Interactive = () => {
           >
             {!clickedMenu && (
               <CustomMenu
+                key={nanoid(13)}
                 rotation={[-Math.PI / 2, 0, 0]}
                 position={[0, 0.25, 0]}
                 scale={1}

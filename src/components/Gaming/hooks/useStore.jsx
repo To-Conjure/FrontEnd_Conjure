@@ -1,8 +1,11 @@
 import create from 'zustand'
 import { nanoid } from 'nanoid'
 
+
 export const useStore = create((set) => ({
 	texture: 'grass',
+    points: 0,
+    time:1,
 	cubes: [
         {
             key: nanoid(),
@@ -71,8 +74,9 @@ export const useStore = create((set) => ({
 
 		}))
 	},
-    points: 0,
     addPoint: () => set((state) => ({ points: state.points + 1 })),
     removePoint: () => set({ points: 0 }),
+    countDown: () => set((state) => ({ time: state.time - 0.01 })),
+    resetCountDown: () => set({ time: 60 }),
   }))
 

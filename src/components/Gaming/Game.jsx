@@ -8,11 +8,14 @@ import "./game.css"
 import { Cubes } from "./Cubes";
 import SkyTime from "./SkyTime";
 import Points from "./Points";
+import Timer from "./Timer";
+
 export default function Map(props) {
 
   return (
     <>
       <Points/>
+      <Timer/>
       <Canvas>
         <Stars
           radius={100}
