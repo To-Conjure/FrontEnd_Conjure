@@ -22,16 +22,28 @@ export default function Login(props) {
       });
       const data = await response.json();
       await setUser(data.username)
-      //console.log(user,"here")
-    } catch (err) {
-      alert(err);
-    }
-  };
+      // console.log(data.message)
+      if(data.message == "valid"){
+        navigate("/play")
+        cleanUp();
+        } else {
+          alert("Information was not correct or please register below")
+          cleanUp();
+        }
+      } catch (err) {
+        alert(err)
+      }
+    };
+
+
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    loginUser();
-    navigate("/play")
-    cleanUp();
+    if(username && email && password){
+      loginUser();
+      } else {
+        alert("Please Input Valid Information")
+      }
   };
 
   function cleanUp() {
@@ -80,7 +92,6 @@ export default function Login(props) {
                 required
               />
               <button
-                // className= {`absolute block w-full bg-cover bg-center bg-load-img z-20 transition-all duration-500 ease-in ${submited ? 'bottom-0 h-full' : 'h-0'}  ${time && 'delay-[unset] top-0 h-0'}`}
                 onClick={handleSubmit}
                 type="submit"
                 className="w-full text-center py-3 bg-black text-white focus:outline-none my-1"

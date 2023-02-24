@@ -83,8 +83,7 @@ const HomeMenu = () => {
   const navigate = useNavigate();
   const textStyle = "text-cyan mt-10 md:text-[50px] font-bold";
   const { user } = useContext(UserContext);
-  console.log(user,"here");
-
+  console.log(user)
   function takeFlight(e) {
     flightSFX.volume = 1;
     flightSFX.loop = false;

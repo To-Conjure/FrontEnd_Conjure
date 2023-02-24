@@ -3,9 +3,8 @@ import { useNavigate } from "react-router-dom";
 import UserContext from "../../Context/userContext";
 
 export default function Register(props) {
-  console.log(UserContext)
   const navigate = useNavigate();
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -23,22 +22,33 @@ export default function Register(props) {
       });
       const data = await response.json();
       const verify = {
-        user: data.createdUser.username,
+        user: data.createdUser?.username,
         token: data.token,
-        userId: data.createdUser.id,
+        userId: data.createdUser?.id,
       };
       localStorage.setItem("c-token", JSON.stringify(verify));
       setUser(data.user);
+      if(data.message !== "invalid"){
+      alert(`You Successfully Registered`)
+      navigate("/login")
+      cleanUp();
+      } else {
+        alert("User may already exist, please login below")
+        cleanUp();
+      }
     } catch (err) {
       console.log(err)
-      alert(err);
     }
   };
+
+  
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(username && email && password){
     registerUser();
-    navigate("/login")
-    cleanUp();
+    } else {
+      alert("Please Input Valid Information")
+    }
   };
 
   function cleanUp() {
