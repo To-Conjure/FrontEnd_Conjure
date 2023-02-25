@@ -78,19 +78,25 @@ const MenuModel = () => {
 export default function Lose() {
   const navigate = useNavigate();
   const textStyle = "text-menu md:text-[120px] text-center mb-25";
-
+  const hoverStyle = "hover:bg-red-700"
   return (
       <div className="w-full h-full bg-cover bg-center bg-warp-img bg-fixed flex justify-center">
         <section>
-          <p className={textStyle}>
+        <div class={hoverStyle}>
+          <p class={textStyle}>
             Game&nbsp;Over
           </p>
+          </div>
+          <div class={hoverStyle}>
           <p className={textStyle} onClick ={(e) => (flightSFX.play(),navigate("/game"))}>
             Retry
           </p>
+          </div>
+          <div className={hoverStyle}>
           <p className={textStyle} onClick ={(e) => (flightSFX.play(),navigate("/"))}>
             Home
           </p>
+          </div>
         </section>
       <MenuModel /> 
       </div>

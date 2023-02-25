@@ -106,12 +106,16 @@ const HomeMenu = () => {
           <p className={textStyle}>
             {user ? `WELCOME ${user.toUpperCase()}` : "WELCOME CAPTAIN"}
           </p>
+          <div className="hover:bg-sky-700 ">
           <p className={textStyle} onClick={takeFlight}>
             ENTER GAME
           </p>
+          </div>
+          <div className="hover:bg-sky-700 ">
           <p className={textStyle} onClick={takeFlight}>
             ENTER TUTORIAL
           </p>
+          </div>
         </section>
       </div>
     </div>

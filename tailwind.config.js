@@ -1,6 +1,14 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
 
 module.exports = {
+  purge: {
+    enabled: true, // This will *always* minify, even on dev builds
+    content: [
+      './src/**/*.html',
+      './src/**/*.js',
+    ],
+  },
   content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {
@@ -24,14 +32,14 @@ module.exports = {
         shadow: "red",
         border: "rgba(66, 6, 129, 1)",
         menu: "#ff0ac2",
-        red: "red",
-        cyan: "cyan",
-        orange: "orange",
+        amber: colors.amber,
+        emerald: colors.emerald,
       },
       flex: {
         '2': '2 2 0%'
       },
       backgroundImage:{
+        'color-img': "url('../src/components/images/tutorial.png')",
         'tutorial-img': "url('../src/components/images/tutorial.png')",
         'space-img': "url('../src/components/images/space.jpg')",
         'warp-img': "url('../src/components/images/warp.gif')",
