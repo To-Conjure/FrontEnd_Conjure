@@ -13,7 +13,7 @@ const winSFX = new Audio(win);
 const deathSFX = new Audio(death);
 const jumpSFX = new Audio(jump);
 
-const JUMP_FORCE = 7;
+const JUMP_FORCE = 10;
 let MOVE = 4;
 
 export const Player = () => {

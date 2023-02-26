@@ -15,8 +15,10 @@ import { useNavigate } from "react-router-dom";
 import soundON from '../sounds/sound-on.png'
 import soundOFF from '../sounds/sound-off.png'
 import battleMusic from '../sounds/galatic.wav'
+import startSound from '../sounds/start.mp3'
 import { nanoid } from "nanoid";
 
+const startSoundSFX = new Audio(startSound);
 const audioBG = new Audio(battleMusic);
 let isMusic = false;
 
@@ -74,13 +76,10 @@ const CustomMenu = (props) => {
   });
   //transitions scene
   const menuClicked = (item) => {
-    // isMusic && clickSoundEffect();
-    // const path = item.label.toLowerCase()
     props.setClickedMenu(item);
     setTimeout(() => {
       props.setTime(true);
     }, 1500);
-    // navigate(`/${path}`)
   };
   return (
   
@@ -119,7 +118,7 @@ const CustomMenu = (props) => {
               position={[1.88, 0, (0) * -0.5]}
               transform
             >
-              <div className={menuStyle} onClick = {() => navigate("/play")}>
+              <div className={menuStyle} onClick = {() => (startSoundSFX.play(),navigate("/play"))}>
                 <div className={animatedStyle}></div>
                 PLAY NOW
               </div>
@@ -221,7 +220,6 @@ const Interactive = () => {
             <div
               className="fixed group top-[10px] right-[10px] md:top-[50px] md:right-[50px] w-[50px] h-[50px] bg-white cursor-pointer flex justify-center items-center text-black hover:text-white"
               onClick={() => closePage()}
-              // onMouseEnter={() => isMusic && hoverSoundEffect()}
             >
               <div className="absolute h-full bg-menu w-0 right-0 block transform group-hover:animate-cover"></div>
               <p className="absolute font-normal text-[30px]">&#10005;</p>

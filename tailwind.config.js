@@ -32,14 +32,12 @@ module.exports = {
         shadow: "red",
         border: "rgba(66, 6, 129, 1)",
         menu: "#ff0ac2",
-        amber: colors.amber,
-        emerald: colors.emerald,
+        cyan: "cyan",
       },
       flex: {
         '2': '2 2 0%'
       },
       backgroundImage:{
-        'color-img': "url('../src/components/images/tutorial.png')",
         'tutorial-img': "url('../src/components/images/tutorial.png')",
         'space-img': "url('../src/components/images/space.jpg')",
         'warp-img': "url('../src/components/images/warp.gif')",
@@ -48,8 +46,6 @@ module.exports = {
         'fire-img': "url('../src/components/images/fire.jpg')",
         'stars-img': "url('../src/components/images/stars.jpg')",
         'load-img': "url('../src/components/images/loading.gif')",
-        gradient: "radial-gradient(circle, rgba(253,33,189,1) 28%, rgba(180,2,255,1) 72%);",
-        pink: "radial-gradient(circle, rgba(255,0,254,1) 0%, rgba(85,70,252,1) 100%)",
       },
       animation: {
         cover: "cover 0.5s forwards ease-out",

@@ -45,7 +45,7 @@ export const Cube = ({ position, texture }) => {
     <mesh 
     // onClick={(e) => handleBlocks()} 
     ref={ref}>
-      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
+      <boxBufferGeometry attach="geometry" args={[1]} />
       <meshStandardMaterial map={currTexture} />
     </mesh>
   );
