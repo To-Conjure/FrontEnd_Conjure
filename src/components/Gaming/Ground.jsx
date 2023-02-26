@@ -13,7 +13,7 @@ export const Ground = () => {
     // }
 
     const [ref] = usePlane(() => ({
-        rotation: [-Math.PI/2,0,0], position:[0,-100,-100]
+        rotation: [-Math.PI/2,0,0], position:[0,-10,-10]
     }))
 
     lavaTexture.repeat.set(1000,1000)

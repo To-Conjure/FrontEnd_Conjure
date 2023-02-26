@@ -9,9 +9,9 @@ import {
   useFBX,
 } from "@react-three/drei";
 import flight from '../sounds/flight.mp3'
+import { useStore } from "./hooks/useStore";
+
 const flightSFX = new Audio(flight);
-
-
 
 const Spaceship = () => {
   const fbx = useFBX("/fbxAssets/spaceship.fbx");
@@ -45,7 +45,7 @@ const MenuModel = () => {
           position={[3, 7, 14]}
           focusDistance={[0, 0]}
         />
-        <ambientLight color="red" intensity={0.5} />
+        <ambientLight color="blue" intensity={0.5} />
         <spotLight
           position={[1, 40, 10]}
           angle={0.15}
@@ -77,18 +77,17 @@ const MenuModel = () => {
 
 export default function Lose() {
   const navigate = useNavigate();
-  const textStyle = "text-menu md:text-[120px] text-center mb-25";
-  const hoverStyle = "hover:bg-red-700"
+  const textStyle = "text-cyan md:text-[120px] text-center mb-25";
+  const hoverStyle = "hover:bg-sky-700"
+  const resetTime = useStore((state) => state.resetCountDown);
   return (
-      <div className="w-full h-full bg-cover bg-center bg-warp-img bg-fixed flex justify-center">
+      <div className="w-full h-full bg-cover bg-center bg-warping-img bg-fixed flex justify-center">
         <section>
-        <div class={hoverStyle}>
           <p class={textStyle}>
             Game&nbsp;Over
           </p>
-          </div>
           <div class={hoverStyle}>
-          <p className={textStyle} onClick ={(e) => (flightSFX.play(),navigate("/game"))}>
+          <p className={textStyle} onClick ={(e) => (resetTime(),flightSFX.play(),navigate("/game"))}>
             Retry
           </p>
           </div>

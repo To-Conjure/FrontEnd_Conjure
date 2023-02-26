@@ -13,7 +13,7 @@ const winSFX = new Audio(win);
 const deathSFX = new Audio(death);
 const jumpSFX = new Audio(jump);
 
-const JUMP_FORCE = 10;
+let JUMP_FORCE = 8;
 let MOVE = 4;
 
 export const Player = () => {
@@ -54,17 +54,26 @@ export const Player = () => {
   const y = +pos.current[1].toFixed(2);
   const z = +pos.current[2].toFixed(2);
   const xyz = [x, y, z];
-  console.log(xyz);
+  console.log(xyz)
+  //Fall logic keep track
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const playerFall = pos.current[1].toFixed(2);
+      // if(Math.sign(playerFall) == -1) MOVE = -1000
+      console.log(playerFall)
+      if(playerFall <= -8){
+        remove();
+        deathSFX.play();
+        navigate("/lose");
+      }
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
 
-  if (x <= -0.05 && y <= 2 && z <= -29.5) {
+
+  if (x >= 0 && y <= 2 && z <= -29) {
     winSFX.play();
     navigate("/win");
-  }
-
-  if (y <= -90) {
-    remove();
-    deathSFX.play();
-    navigate("/lose");
   }
 
   useFrame(() => {
@@ -98,13 +107,15 @@ export const Player = () => {
     //run movement
     api.velocity.set(direction.x, vel.current[1], direction.z);
 
+    sprint ? MOVE = 8 : MOVE = 4
+
     //jump logic and prevent multiple jumps before landing
     if (jump && Math.abs(vel.current[1].toFixed(2)) < 0.05) {
       add();
       jumpSFX.play();
       api.velocity.set(vel.current[0], JUMP_FORCE, vel.current[2]);
     }
-    sprint ? (MOVE = 8) : (MOVE = 4);
+
   });
 
   return (

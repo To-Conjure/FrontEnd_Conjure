@@ -11,6 +11,7 @@ import {
 import UserContext from "../../Context/userContext";
 import warp from "../sounds/warp.mp3";
 import flight from "../sounds/flight.mp3";
+import { useStore } from "../Gaming/hooks/useStore";
 
 const warpSFX = new Audio(warp);
 const flightSFX = new Audio(flight);
@@ -81,15 +82,17 @@ const MenuModel = () => {
 
 const HomeMenu = () => {
   const navigate = useNavigate();
+  const resetTime = useStore((state) => state.resetCountDown);
   const textStyle = "text-cyan mt-10 md:text-[50px] font-bold";
   const { user } = useContext(UserContext);
-  console.log(user)
+
   function takeFlight(e) {
     flightSFX.volume = 1;
     flightSFX.loop = false;
     flightSFX.play();
     const path = e.target.innerText.toLowerCase().substring(6);
     navigate(`/${path}`);
+    resetTime()
   }
   return (
     <div className="w-full h-full bg-cover bg-center bg-warping-img flex justify-center">
