@@ -1,14 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  purge: {
-    enabled: true, // This will *always* minify, even on dev builds
     content: [
       './src/**/*.html',
       './src/**/*.js',
     ],
-  },
-  content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {
       fontFamily: {
