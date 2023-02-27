@@ -3,53 +3,83 @@ import { nanoid } from 'nanoid'
 
 
 export const useStore = create((set) => ({
-	texture: 'grass',
+    texture:"spaceGround",
     points: 0,
     time:60,
 	cubes: [
         {
             key: nanoid(),
             pos: [1,0,-0.5],
-            texture: "grass",
+            texture: "spaceGround",
         },
         {
             key: nanoid(),
             pos: [0,0,-0.5],
-            texture: "grass",
+            texture: "spaceGround",
         },
         {
             key: nanoid(),
             pos: [1,0,0.5],
-            texture: "grass",
+            texture: "spaceGround",
         },
         {
             key: nanoid(),
             pos: [-1,0,0.5],
-            texture: "grass",
+            texture: "spaceGround",
         },
         {
             key: nanoid(),
             pos: [-1,0,-0.5],
-            texture: "grass",
+            texture: "spaceGround",
         },
         {
             key: nanoid(),
             pos: [0,0,0.5],
-            texture: "grass",
+            texture: "spaceGround",
         },
         {
             key: nanoid(),
-            pos: [0,0,-10],
+            pos: [0,0,-1.5],
+            texture: "up",
+        },
+        {
+            key: nanoid(),
+            pos: [1,0,-1.5],
+            texture: "up",
+        },
+        {
+            key: nanoid(),
+            pos: [-1,0,-1.5],
+            texture: "up",
+        },
+        {
+            key: nanoid(),
+            pos: [0,2,-10],
             texture: "monster",
         },
         {
             key: nanoid(),
-            pos: [0,0,-20],
+            pos: [0,5,-15],
             texture: "monster",
         },
         {
             key: nanoid(),
-            pos: [0,0.5,-30],
+            pos: [0,4,-20],
+            texture: "monster",
+        },
+        {
+            key: nanoid(),
+            pos: [0,10,-23],
+            texture: "monster",
+        },
+        {
+            key: nanoid(),
+            pos: [0,5,-25],
+            texture: "monster",
+        },
+        {
+            key: nanoid(),
+            pos: [0,0,-30],
             texture: "gold",
         },
     ],
