@@ -102,12 +102,12 @@ export default function Login(props) {
 
             <div className="text-grey-dark mt-6 text-white">
               Need have an account? &nbsp;&nbsp;
-              <a
+              <p
                 className="no-underline text-center border-b border-blue text-white"
                 onClick={() => navigate("/register")}
               >
                 Register
-              </a>
+              </p>
             </div>
           </div>
         </form>

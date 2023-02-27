@@ -108,12 +108,12 @@ export default function Register(props) {
 
             <div className="text-grey-dark mt-6 text-white">
               Already have an account? &nbsp;&nbsp;
-              <a
+              <p
                 className="no-underline text-center border-b border-blue text-white"
                 onClick={() => navigate("/login")}
               >
                 Login
-              </a>
+              </p>
             </div>
           </div>
         </form>
