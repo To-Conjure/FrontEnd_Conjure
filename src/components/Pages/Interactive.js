@@ -64,7 +64,7 @@ const CustomMenu = (props) => {
   const menuStyle =
     "group relative cursor-pointer flex items-center justify-center h-[22px] text-menu font-black w-[97px] text-center hover:text-white";
   const animatedStyle =
-    "absolute z-[-1] h-full bg-menu w-0 right-0 block transform group-hover:animate-cover"
+    "absolute z-[-1] h-full bg-menu w-0 right-0 block transform group-hover:animate-pink"
 
   //fbx 3d look
   useFrame((state) => {
@@ -153,10 +153,9 @@ const Interactive = () => {
   }`;
 
   return (
-    // <div className="w-full h-full bg-cover bg-center bg-warp-img flex justify-center">
-    <div className="w-full h-full bg-cover bg-center bg-galaxy-img flex justify-center">
+    <div className="w-full h-full bg-cover bg-center bg-galaxy flex justify-center">
     <div className="absolute bottom-3/4 left-1/3 transform -translate-x-3/4 -translate-y-3/4">
-    <h1 className="text-[100px] font-extrabold text-pink-600 drop-shadow-md shadow-red-600/50">
+    <h1 className="text-[100px] text-pink font-extrabold text-pink-600 drop-shadow-md shadow-red-600/50">
        CONJURE
     </h1>
     </div>
@@ -207,7 +206,7 @@ const Interactive = () => {
       </div>
       {/* menus bg color */}
       {clickedMenu && (
-        <div className="absolute w-full min-h-full bg-cover bg-center bg-space-img top-0 z-20 flex justify-center">
+        <div className="absolute w-full min-h-full bg-cover bg-center bg-space top-0 z-20 flex justify-center">
 
           {/* closeButton appearence */}
           <div
@@ -221,7 +220,7 @@ const Interactive = () => {
               className="fixed group top-[10px] right-[10px] md:top-[50px] md:right-[50px] w-[50px] h-[50px] bg-white cursor-pointer flex justify-center items-center text-black hover:text-white"
               onClick={() => closePage()}
             >
-              <div className="absolute h-full bg-menu w-0 right-0 block transform group-hover:animate-cover"></div>
+              <div className="absolute h-full bg-menu w-0 right-0 block transform group-hover:animate-pink"></div>
               <p className="absolute font-normal text-[30px]">&#10005;</p>
             </div>
           </div>
@@ -229,7 +228,7 @@ const Interactive = () => {
       )}
 
       {/* transition effects */}
-       <div className={`absolute block w-full bg-cover bg-center bg-load-img z-20 transition-all duration-500 ease-in ${clickedMenu ? 'bottom-0 h-full' : 'h-0'}  ${time && 'delay-[unset] top-0 h-0'}`}></div>
+       <div className={`absolute block w-full bg-cover bg-center bg-load z-20 transition-all duration-500 ease-in ${clickedMenu ? 'bottom-0 h-full' : 'h-0'}  ${time && 'delay-[unset] top-0 h-0'}`}></div>
        <img id="musicTrigger" alt="sound icon" src={soundOFF} className="absolute opacity-80 w-[40px] h-[40px] z-10 bottom-0 right-[calc(50vw-20px)] md:top-[20px] left-[20px] cursor-pointer" onClick={(e) => backgroundMusic(e)} />
     </div>
   );

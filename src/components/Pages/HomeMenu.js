@@ -95,7 +95,7 @@ const HomeMenu = () => {
     resetTime()
   }
   return (
-    <div className="w-full h-full bg-cover bg-center bg-warping-img flex justify-center">
+    <div className="w-full h-full bg-cover bg-center bg-warping flex justify-center">
       <MenuModel />
       <div className="absolute top-[20px] left-[20px] md:top-[30px] md:left-[50px]">
         <h1 className="text-cyan md:text-[120px] drop-shadow-white">

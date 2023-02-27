@@ -81,7 +81,7 @@ export default function Lose() {
   const hoverStyle = "hover:bg-sky-700"
   const resetTime = useStore((state) => state.resetCountDown);
   return (
-      <div className="w-full h-full bg-cover bg-center bg-warping-img bg-fixed flex justify-center">
+      <div className="w-full h-full bg-cover bg-center bg-warping bg-fixed flex justify-center">
         <section>
           <p class={textStyle}>
             Game&nbsp;Over

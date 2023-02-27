@@ -54,7 +54,7 @@ export default function Login(props) {
 
   return (
     <>
-      <div className="w-full h-full bg-cover bg-center bg-space-img bg-fixed">
+      <div className="w-full h-full bg-cover bg-center bg-space bg-fixed">
         <form className="bg-grey-lighter">
           <div className="container max-w-sm mx-auto flex grid place-items-start md:place-items-center">
             <div className="bg-white md:mt-40 md:max-w-[80%] md:p-10 text-black w-full">

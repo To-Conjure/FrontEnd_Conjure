@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import { Loader } from "@react-three/drei";
 import { Footer } from "./components/Pages/Footer";
 import { BrowserRouter } from "react-router-dom";
-import App from "./App";
+import App from "./app";
 import UserProvider from "./Context/UserProvider";
 
 

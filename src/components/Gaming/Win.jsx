@@ -83,7 +83,7 @@ export default function Win() {
   const points = useStore(state => state.points + 5)
 
   return (
-      <div className="w-full h-full bg-cover bg-center bg-galaxy-img flex justify-items">
+      <div className="w-full h-full bg-cover bg-center bg-galaxy flex justify-items">
       <MenuModel /> 
         <section>
           <p className={textStyle}>

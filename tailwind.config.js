@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require('tailwindcss/colors')
 
 module.exports = {
   purge: {
@@ -28,7 +27,7 @@ module.exports = {
         yellow: "gold",
         primary: "blue",
         menuText: "#281236",
-        cover: "#ff0a65",
+        pink: "#ff0a65",
         shadow: "red",
         border: "rgba(66, 6, 129, 1)",
         menu: "#ff0ac2",
@@ -38,23 +37,24 @@ module.exports = {
         '2': '2 2 0%'
       },
       backgroundImage:{
-        'tutorial-img': "url('../src/components/images/tutorial.png')",
-        'space-img': "url('../src/components/images/space.jpg')",
-        'warp-img': "url('../src/components/images/warp.gif')",
-        'warping-img': "url('../src/components/images/warping.gif')",
-        'galaxy-img': "url('../src/components/images/galaxy.jpg')",
-        'fire-img': "url('../src/components/images/fire.jpg')",
-        'stars-img': "url('../src/components/images/stars.jpg')",
-        'load-img': "url('../src/components/images/loading.gif')",
+        'moon':"url('../src/components/images/moon.jpeg')",
+        'tutorial':"url('../src/components/images/tutorial.png')",
+        'space':"url('../src/components/images/space.jpg')",
+        'warp':"url('../src/components/images/warp.gif')",
+        'warping':"url('../src/components/images/warping.gif')",
+        'galaxy':"url('../src/components/images/galaxy.jpg')",
+        'fire':"url('../src/components/images/fire.jpg')",
+        'stars':"url('../src/components/images/stars.jpg')",
+        'load':"url('../src/components/images/loading.gif')",
       },
       animation: {
-        cover: "cover 0.5s forwards ease-out",
+        pink: "pink 0.5s forwards ease-out",
         shadow:"shadow 0.5s forwards ease-out",
         slide: "slide 5s infinite running ease-out ease-in-out",
         shine: "shine 1s",
       },
       keyframes: {
-        cover: {
+        pink: {
           "100%": { width: "100%" },
         },
         shadow: {
