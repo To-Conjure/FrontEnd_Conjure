@@ -1,4 +1,4 @@
-import tutorialSVG from "../images/tutorialSVG.svg";
+import tutorial from "../images/tutorial.png"
 import play from "../images/playButton.png";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
@@ -23,11 +23,11 @@ const Tutorial = () => {
 
   return (
     <>
-      <div className="w-full h-full bg-galaxy bg-no-repeat bg-cover">
+      <div className="w-full h-full bg-galaxy bg-no-repeat bg-cover flex justify-center">
         <img
-          src={tutorialSVG}
+          src={tutorial}
           alt="tutorial"
-          className="h-full w-full flex justify-center"
+          className="h-full"
         />
       </div>
       <img
