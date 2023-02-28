@@ -63,7 +63,7 @@ export default function Register(props) {
         <form className="bg-grey-lighter">
           <div className="container max-w-sm mx-auto flex grid place-items-start md:place-items-center">
             <div className="bg-white md:mt-40 md:max-w-[80%] md:p-10 text-black w-full">
-              <h1 className="mb-8 text-4xl text-center">Register</h1>
+              <h1 className="mb-8 text-4xl text-center">REGISTER</h1>
               <input
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -108,12 +108,12 @@ export default function Register(props) {
 
             <div className="text-grey-dark mt-6 text-white">
               Already have an account? &nbsp;&nbsp;
-              <p
+              <a
                 className="no-underline text-center border-b border-blue text-white"
                 onClick={() => navigate("/login")}
               >
                 Login
-              </p>
+              </a>
             </div>
           </div>
         </form>

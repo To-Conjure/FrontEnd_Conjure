@@ -2,6 +2,9 @@ import tutorial from "../images/tutorial.png"
 import play from "../images/playButton.png";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
+import flight from "../sounds/flight.mp3";
+
+const flightSFX = new Audio(flight);
 
 const Tutorial = () => {
   const navigate = useNavigate();
@@ -37,7 +40,7 @@ const Tutorial = () => {
         style={boxStyle}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onClick = {() => navigate("/game")}
+        onClick = {() => (flightSFX.play(),navigate("/game"))}
       />
     </>
   );

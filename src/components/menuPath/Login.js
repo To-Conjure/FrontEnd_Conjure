@@ -58,7 +58,7 @@ export default function Login(props) {
         <form className="bg-grey-lighter">
           <div className="container max-w-sm mx-auto flex grid place-items-start md:place-items-center">
             <div className="bg-white md:mt-40 md:max-w-[80%] md:p-10 text-black w-full">
-              <h1 className="mb-8 text-4xl text-center">Login</h1>
+              <h1 className="mb-8 text-4xl text-center">LOGIN</h1>
               <input
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -102,12 +102,12 @@ export default function Login(props) {
 
             <div className="text-grey-dark mt-6 text-white">
               Need have an account? &nbsp;&nbsp;
-              <p
+              <a
                 className="no-underline text-center border-b border-blue text-white"
                 onClick={() => navigate("/register")}
               >
                 Register
-              </p>
+              </a>
             </div>
           </div>
         </form>

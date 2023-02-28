@@ -12,10 +12,10 @@ import Login from "../menuPath/Login";
 import Register from "../menuPath/Register";
 import { useNavigate } from "react-router-dom";
 
-import soundON from '../sounds/sound-on.png'
-import soundOFF from '../sounds/sound-off.png'
-import battleMusic from '../sounds/galatic.wav'
-import startSound from '../sounds/start.mp3'
+import soundON from "../sounds/sound-on.png";
+import soundOFF from "../sounds/sound-off.png";
+import battleMusic from "../sounds/galatic.wav";
+import startSound from "../sounds/start.mp3";
 import { nanoid } from "nanoid";
 
 const startSoundSFX = new Audio(startSound);
@@ -29,10 +29,9 @@ const menuItem = [
   },
   {
     label: "REGISTER",
-    content: <Register/>,
+    content: <Register />,
   },
 ];
- 
 
 const Hologram = () => {
   const fbx = useFBX("/fbxAssets/holo.fbx");
@@ -42,29 +41,27 @@ const Hologram = () => {
 // music toggle
 const backgroundMusic = (e) => {
   if (!isMusic) {
-      audioBG.volume = 0.5;
-      audioBG.loop = true;
-      audioBG.play();
-      isMusic = true;
-      e.target.src = soundON;
+    audioBG.volume = 0.5;
+    audioBG.loop = true;
+    audioBG.play();
+    isMusic = true;
+    e.target.src = soundON;
+  } else {
+    audioBG.pause();
+    isMusic = false;
+    e.target.src = soundOFF;
   }
-  else {
-      audioBG.pause();
-      isMusic = false;
-      e.target.src = soundOFF;
-  }
-}
+};
 
 const CustomMenu = (props) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const ref = useRef();
-
 
   //tailwindCSS
   const menuStyle =
-    "group relative cursor-pointer flex items-center justify-center h-[22px] text-menu font-black w-[97px] text-center hover:text-white";
+    "group relative flex items-center justify-center h-[22px] text-menu font-black w-[97px] text-center hover:text-white";
   const animatedStyle =
-    "absolute z-[-1] h-full bg-menu w-0 right-0 block transform group-hover:animate-pink"
+    "absolute z-[-1] h-full bg-menu w-0 right-0 block transform group-hover:animate-pink";
 
   //fbx 3d look
   useFrame((state) => {
@@ -82,7 +79,6 @@ const CustomMenu = (props) => {
     }, 1500);
   };
   return (
-  
     <group ref={ref} {...props} dispose={null}>
       {menuItem.map((item, key) => (
         <>
@@ -110,34 +106,33 @@ const CustomMenu = (props) => {
           </mesh>
         </>
       ))}
-            <mesh>
-            <Html
-              wrapperClass
-              scale={0.7}
-              rotation={[Math.PI / 2, 0, 0]}
-              position={[1.88, 0, (0) * -0.5]}
-              transform
-            >
-              <div className={menuStyle} onClick = {() => (startSoundSFX.play(),navigate("/play"))}>
-                <div className={animatedStyle}></div>
-                PLAY NOW
-              </div>
-            </Html>
-          </mesh>
-          <mesh
-            scale={[1.7, 0.1, 0.4]}
-            position={[1.88, 0.06, (0) * -0.5]}
+      <mesh>
+        <Html
+          wrapperClass
+          scale={0.7}
+          rotation={[Math.PI / 2, 0, 0]}
+          position={[1.88, 0, 0 * -0.5]}
+          transform
+        >
+          <div
+            className={menuStyle}
+            onClick={() => (startSoundSFX.play(), navigate("/play"))}
           >
-            <boxBufferGeometry />
-            <meshStandardMaterial color="#ff0a65" />
-          </mesh>
-      <Hologram/>
+            <div className={animatedStyle}></div>
+            PLAY NOW
+          </div>
+        </Html>
+      </mesh>
+      <mesh scale={[1.7, 0.1, 0.4]} position={[1.88, 0.06, 0 * -0.5]}>
+        <boxBufferGeometry />
+        <meshStandardMaterial color="#ff0a65" />
+      </mesh>
+      <Hologram />
     </group>
-
   );
 };
 const Interactive = () => {
-  //close page  
+  //close page
 
   const closePage = () => {
     setClickedMenu(null);
@@ -147,18 +142,30 @@ const Interactive = () => {
 
   const [clickedMenu, setClickedMenu] = useState(null);
   const [time, setTime] = useState(null);
-  
+  const cssStyle = {
+    backgroundColor: "transparent",
+    color: "#FFFFFF",
+    background: "#232323",
+    textShadow:
+      "0 0 5px #a18dce, 0 0 10px #f492f0, 0 0 15px #f492f0, 0 0 20px #f492f0, 0 0 30px #f492f0, 0 0 40px #f492f0, 0 0 55px #f492f0, 0 0 75px #a18dce",
+    color: "#FFFFFF",
+    background: "transparent",
+  };
+
   const menuClickedStyle = `md:w-full md:h-full transition-opacity duration-500 opacity-0 ${
     !clickedMenu && `opacity-100`
   }`;
 
   return (
     <div className="w-full h-full bg-cover bg-center bg-galaxy flex justify-center">
-    <div className="absolute bottom-3/4 left-1/3 transform -translate-x-3/4 -translate-y-3/4">
-    <h1 className="text-[100px] text-pink font-extrabold text-pink-600 drop-shadow-md shadow-red-600/50">
-       CONJURE
-    </h1>
-    </div>
+      <div className="absolute bottom-3/4 left-1/3 transform -translate-x-3/4 -translate-y-3/4">
+        <h1
+          className="text-[120px] text-pink font-extrabold text-pink-600 drop-shadow-md shadow-red-600/50"
+          style={cssStyle}
+        >
+          CONJURE
+        </h1>
+      </div>
       <div className={menuClickedStyle}>
         <Canvas shadows dpr={[2, 3]} camera={{ position: [0, 0, 4], fov: 70 }}>
           <PerspectiveCamera
@@ -207,7 +214,6 @@ const Interactive = () => {
       {/* menus bg color */}
       {clickedMenu && (
         <div className="absolute w-full min-h-full bg-cover bg-center bg-space top-0 z-20 flex justify-center">
-
           {/* closeButton appearence */}
           <div
             className={`w-full h-full md:max-w-[80%] text-black w-full transition-opacity duration-1000 opacity-0 ${
@@ -228,8 +234,18 @@ const Interactive = () => {
       )}
 
       {/* transition effects */}
-       <div className={`absolute block w-full bg-cover bg-center bg-load z-20 transition-all duration-500 ease-in ${clickedMenu ? 'bottom-0 h-full' : 'h-0'}  ${time && 'delay-[unset] top-0 h-0'}`}></div>
-       <img id="musicTrigger" alt="sound icon" src={soundOFF} className="absolute opacity-80 w-[40px] h-[40px] z-10 bottom-0 right-[calc(50vw-20px)] md:top-[20px] left-[20px] cursor-pointer" onClick={(e) => backgroundMusic(e)} />
+      <div
+        className={`absolute block w-full bg-cover bg-center bg-load z-20 transition-all duration-500 ease-in ${
+          clickedMenu ? "bottom-0 h-full" : "h-0"
+        }  ${time && "delay-[unset] top-0 h-0"}`}
+      ></div>
+      <img
+        id="musicTrigger"
+        alt="sound icon"
+        src={soundOFF}
+        className="absolute opacity-80 w-[40px] h-[40px] z-10 bottom-0 right-[calc(50vw-20px)] md:top-[20px] left-[20px] cursor-pointer"
+        onClick={(e) => backgroundMusic(e)}
+      />
     </div>
   );
 };
