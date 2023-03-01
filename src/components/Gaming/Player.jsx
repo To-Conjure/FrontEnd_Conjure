@@ -16,7 +16,7 @@ const powerDownSFX = new Audio(powerDown);
 const deathSFX = new Audio(death);
 const jumpSFX = new Audio(jump);
 
-let JUMP_FORCE = 8;
+let JUMP_FORCE = 6;
 let MOVE = 4;
 
 export const Player = () => {
@@ -24,21 +24,23 @@ export const Player = () => {
   const { camera } = useThree();
   const { goBackward, goForward, goRight, goLeft, jump, sprint } =
     useKeyboard();
-  const addPoint = useStore((state) => state.addPoint);
   const removePoint = useStore((state) => state.removePoint);
-
-  const add = () => {
-    addPoint();
-  };
+  const resetPoint = useStore((state) => state.resetPoint);
 
   const remove = () => {
     removePoint();
   };
 
+  const reset = () => {
+    resetPoint();
+  };
+
+  
+
   const [ref, api] = useSphere(() => ({
     mass: 1,
     type: "Dynamic",
-    position: [0, 2, 0],
+    position: [0, 5, 0],
   }));
 
   //velocity for the sphere
@@ -57,16 +59,32 @@ export const Player = () => {
   const y = +pos.current[1].toFixed(2);
   const z = +pos.current[2].toFixed(2);
   const xyz = [x, y, z];
-  // console.log(x,y,z)
+  console.log(x,y,z)
 
+  function speedBlock(){  
+    let speedBoost = setInterval(() => (JUMP_FORCE = 50), 1000);
+    //end speed effect
+    setTimeout(() => {
+      clearInterval(speedBoost);
+      powerDownSFX.play()
+      JUMP_FORCE = 4;
+    }, 3000);
+  }
   
+  //speed boost feature
+  if(x >= -0.5 && y <= 0.5 && z <= -10){
+    console.log("here")
+    powerUpSFX.play()
+    speedBlock()
+  }
+
   //Fall logic keep track
   useEffect(() => {
     const interval = setInterval(() => {
       const playerFall = pos.current[1].toFixed(2);
       // console.log(playerFall)
       if (playerFall <= -8) {
-        remove();
+        reset();
         deathSFX.play();
         navigate("/lose");
       }
@@ -74,26 +92,9 @@ export const Player = () => {
     return () => clearInterval(interval);
   }, []);
 
-  
-
-  function speedBlock(){  
-  let speedBoost = setInterval(() => (MOVE = 8), 1000);
-  //end speed effect
-  setTimeout(() => {
-    clearInterval(speedBoost);
-    powerDownSFX.play()
-    MOVE = 4;
-  }, 3000);
-}
-
-//speed boost feature
-// if((x <= -1.4 || x <= 1.5 ) && y >= 1.5 && z >= -1.15){
-//   powerUpSFX.play()
-//   speedBlock()
-// }
 
 
-  if (x >= 0 && y <= 2 && z <= -29) {
+  if (x >= -0.5 && y <= 2 && z <= -29) {
     winSFX.play();
     navigate("/win");
   }
@@ -133,7 +134,7 @@ export const Player = () => {
 
     //jump logic and prevent multiple jumps before landing
     if (jump && Math.abs(vel.current[1].toFixed(2)) < 0.01) {
-      add();
+      remove();
       jumpSFX.play();
       api.velocity.set(vel.current[0], JUMP_FORCE, vel.current[2]);
     }

@@ -9,8 +9,10 @@ import {
   lava,
   spaceGround,
   up,
+  mystery,
 } from "./images";
 
+const mysteryTexture = new TextureLoader().load(mystery);
 const stoneTexture = new TextureLoader().load(stone);
 const grassTexture = new TextureLoader().load(grass);
 const monsterTexture = new TextureLoader().load(monster);
@@ -26,7 +28,7 @@ grassTexture.magFilter = NearestFilter;
 monsterTexture.magFilter = NearestFilter;
 goldTexture.magFilter = NearestFilter;
 upTexture.magFilter = NearestFilter;
-
+mysteryTexture.magFilter = NearestFilter;
 lavaTexture.magFilter = NearestFilter;
 lavaTexture.wrapS = RepeatWrapping;
 lavaTexture.wrapT = RepeatWrapping;
@@ -39,5 +41,6 @@ export {
   goldTexture,
   lavaTexture,
   spaceGroundTexture,
-  upTexture
+  upTexture,
+  mysteryTexture
 };

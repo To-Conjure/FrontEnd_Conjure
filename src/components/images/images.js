@@ -6,6 +6,7 @@ import gold from "./gold.png"
 import lava from "./lava.jpg"
 import spaceGround from "./spaceGround.png"
 import up from "./up.png"
+import mystery from "./qblock.png"
 export {
     grass,
     stone,
@@ -15,4 +16,5 @@ export {
     lava,
     spaceGround,
     up,
+    mystery,
 }

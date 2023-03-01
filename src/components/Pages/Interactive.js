@@ -160,7 +160,7 @@ const Interactive = () => {
     <div className="w-full h-full bg-cover bg-center bg-galaxy flex justify-center">
       <div className="absolute bottom-3/4 left-1/3 transform -translate-x-3/4 -translate-y-3/4">
         <h1
-          className="text-[120px] text-pink font-extrabold text-pink-600 drop-shadow-md shadow-red-600/50"
+          className="text-[100px] text-pink font-extrabold text-pink-600 drop-shadow-md shadow-red-600/50"
           style={cssStyle}
         >
           CONJURE
@@ -243,7 +243,7 @@ const Interactive = () => {
         id="musicTrigger"
         alt="sound icon"
         src={soundOFF}
-        className="absolute opacity-80 w-[40px] h-[40px] z-10 bottom-0 right-[calc(50vw-20px)] md:top-[20px] left-[20px] cursor-pointer"
+        className="absolute opacity-80 w-[40px] h-[40px] z-10 top-0 right-0 md:top-[20px] right-[20px]"
         onClick={(e) => backgroundMusic(e)}
       />
     </div>

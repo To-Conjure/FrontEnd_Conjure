@@ -10,6 +10,7 @@ import {
 } from "@react-three/drei";
 import flight from "../sounds/flight.mp3";
 import { useStore } from "./hooks/useStore";
+import redWarp from "../images/redWarp.gif"
 
 const flightSFX = new Audio(flight);
 
@@ -76,10 +77,22 @@ const MenuModel = () => {
 
 export default function Lose() {
   const navigate = useNavigate();
-  const textStyle = "md:text-[120px] text-center mb-25";
+  const textStyle = "md:text-[100px] text-center mb-25";
   const resetTime = useStore((state) => state.resetCountDown);
   const [isHover, setIsHover] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+
+
+  const gameOverStyle = {
+    backgroundColor: "transparent",
+    color: "#FFFFFF",
+    background: "#232323",
+    textShadow:
+      "0 0 5px #f7f779, 0 0 10px #ff0f7b, 0 0 15px #ff0f7b, 0 0 20px #ff0f7b, 0 0 30px #ff0f7b, 0 0 40px #ff0f7b, 0 0 55px #ff0f7b, 0 0 75px #ff0f7b",
+    color: "#FFFFFF",
+    background: "transparent",
+  };
+
 
   const hoverRetryStyle = {
     backgroundColor: "transparent",
@@ -101,6 +114,10 @@ export default function Lose() {
     background: "transparent",
   };
 
+  const backgroundStyle = {
+    backgroundImage: "url('../images/warping.gif')",
+  }
+
   const retryHoverOn = () => {
     setIsHover(true);
   };
@@ -116,9 +133,9 @@ export default function Lose() {
   };
 
   return (
-    <div className="w-full h-full bg-cover bg-center bg-warp bg-fixed flex justify-center">
+    <div className="w-full h-full bg-cover bg-center bg-fixed flex justify-center">
       <section>
-        <p class={textStyle} style = {{color:"red"}}>GAME&nbsp;OVER</p>
+        <p class={textStyle} style = {gameOverStyle}>GAME&nbsp;OVER</p>
         <div>
           <p
             className={textStyle}

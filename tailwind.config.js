@@ -33,7 +33,6 @@ module.exports = {
         '2': '2 2 0%'
       },
       backgroundImage:{
-        'moon':"url('../src/components/images/moon.jpeg')",
         'tutorial':"url('../src/components/images/tutorial.png')",
         'space':"url('../src/components/images/space.jpg')",
         'warp':"url('../src/components/images/warp.gif')",

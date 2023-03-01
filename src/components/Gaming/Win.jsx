@@ -76,19 +76,30 @@ const MenuModel = () => {
 
 export default function Win() {
   const navigate = useNavigate();
-  const textStyle = "mt-20 md:text-[120px] text-center font-bold";
-  const removePoint = useStore((state) => state.removePoint);
-  const points = useStore((state) => state.points + 5);
+  const textStyle = "mt-20 md:text-[100px] text-center font-bold";
+  const resetPoint = useStore((state) => state.resetPoint);
+  const points = useStore((state) => state.points);
 
   const [isHover, setIsHover] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+
+  const scoreStyle = {
+    backgroundColor:"transparent",
+    color: "#FFFFFF",
+    background: "#232323",
+    textShadow:
+      "0 0 5px #E9D66B, 0 0 10px #E9D66B, 0 0 15px #E9D66B, 0 0 20px #E9D66B, 0 0 30px #E9D66B, 0 0 40px #f7f779, 0 0 55px #f7f779, 0 0 75px #f7f779",
+    color: "#FFFFFF",
+    background: "transparent",
+  };
+
 
   const hoverRetryStyle = {
     backgroundColor:"transparent",
     color: "#FFFFFF",
     background: "#232323",
     textShadow:
-      "0 0 5px #f7f779, 0 0 10px #f7f779, 0 0 15px #f7f779, 0 0 20px #f7f779, 0 0 30px #f7f779, 0 0 40px #f7f779, 0 0 55px #f7f779, 0 0 75px #f7f779",
+      "0 0 5px #E9D66B, 0 0 10px #E9D66B, 0 0 15px #E9D66B, 0 0 20px #f7f779, 0 0 30px #f7f779, 0 0 40px #f7f779, 0 0 55px #f7f779, 0 0 75px #f7f779",
     color: "#FFFFFF",
     background: "transparent",
   };
@@ -98,7 +109,7 @@ export default function Win() {
     color: "#FFFFFF",
     background: "#232323",
     textShadow:
-      "0 0 5px #f7f779, 0 0 10px #f7f779, 0 0 15px #f7f779, 0 0 20px #f7f779, 0 0 30px #f7f779, 0 0 40px #f7f779, 0 0 55px #f7f779, 0 0 75px #f7f779",
+      "0 0 5px #E9D66B, 0 0 10px #E9D66B, 0 0 15px #E9D66B, 0 0 20px #f7f779, 0 0 30px #f7f779, 0 0 40px #f7f779, 0 0 55px #f7f779, 0 0 75px #f7f779",
     color: "#FFFFFF",
     background: "transparent",
   };
@@ -121,7 +132,7 @@ export default function Win() {
     <div className="w-full h-full bg-cover bg-center bg-galaxy flex justify-items">
       <MenuModel />
       <section>
-        <p className={textStyle} style={{ color: "gold" }}>
+        <p className={textStyle} style={scoreStyle}>
           SCORE:{points}
         </p>
         <p
@@ -129,7 +140,7 @@ export default function Win() {
           style={isHover ? hoverRetryStyle : {color:"gold"} }
           onMouseEnter={retryHoverOn}
           onMouseLeave={retryHoverOff}
-          onClick={() => (removePoint(), navigate("/game"))}
+          onClick={() => (resetPoint(), navigate("/game"))}
         >
           RETRY
         </p>
@@ -139,7 +150,7 @@ export default function Win() {
           style={isHovered ? hoverHomeStyle : {color:"gold"}}
           onMouseEnter={homeHoverOn}
           onMouseLeave={homeHoverOff}
-          onClick={() => (removePoint(), navigate("/"))}
+          onClick={() => (resetPoint(), navigate("/"))}
         >
           HOME
         </div>

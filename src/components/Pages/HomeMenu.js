@@ -41,7 +41,6 @@ const ModelAnimated = (props) => {
   );
 };
 const MenuModel = () => {
-  const textStyle = "text-white mt-10 md:text-[50px] font-bold";
   return (
     <Canvas shadows dpr={[2, 3]} camera={{ position: [0, 0, 0], fov: 90 }}>
       <PerspectiveCamera
@@ -83,9 +82,8 @@ const MenuModel = () => {
 const HomeMenu = () => {
   const navigate = useNavigate();
   const resetTime = useStore((state) => state.resetCountDown);
-  const textStyle = "text-cyan mt-10 md:text-[50px] font-bold";
+  const textStyle = "text-cyan mt-10 md:text-[40px] font-bold";
   const { user } = useContext(UserContext);
-
   function takeFlight(e) {
     flightSFX.volume = 1;
     flightSFX.loop = false;
@@ -94,11 +92,22 @@ const HomeMenu = () => {
     navigate(`/${path}`);
     resetTime()
   }
+
+  const titleStyle = {
+    backgroundColor:"transparent",
+    color: "#FFFFFF",
+    background: "#232323",
+    textShadow:
+      "0 0 5px #00FFFF, 0 0 10px #0FFFFF, 0 0 15px #0FFFFF, 0 0 20px #0FFFFF, 0 0 30px #00BFFF, 0 0 40px #00BFFF, 0 0 55px #0FFFFF, 0 0 75px #f7f779",
+    color: "#FFFFFF",
+    background: "transparent",
+  };
+
   return (
     <div className="w-full h-full bg-cover bg-center bg-warping flex justify-center">
       <MenuModel />
       <div className="absolute top-[20px] left-[20px] md:top-[30px] md:left-[50px]">
-        <h1 className="text-cyan md:text-[120px] drop-shadow-white">
+        <h1 className="text-cyan md:text-[100px] drop-shadow-white" style = {titleStyle}>
           <br />
           <br />
           CONJURE

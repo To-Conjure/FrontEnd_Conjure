@@ -12,16 +12,7 @@ const Timer = () => {
   const timeSeconds = time.toFixed(2);
   const timer = useStore((state) => state.countDown);
   const overTime = useStore((state) => state.resetCountDown);
-  const textStyle = {
-    backgroundColor: "transparent",
-    color: "#FFFFFF",
-    background: "#232323",
-    textShadow:
-      "0 0 5px #ff0f7b, 0 0 10px #ff0f7b, 0 0 15px #ff0f7b, 0 0 20px #ff0f7b, 0 0 30px #ff0f7b, 0 0 40px #ff0f7b, 0 0 55px #ff0f7b, 0 0 75px #ff0f7b",
-    color: "#FFFFFF",
-    background: "transparent",
-    fontSize: "36px",
-  };
+
   const gameOver = () => {
     if (timeSeconds < 1) {
       tickingSFX.volume = 0.8;
