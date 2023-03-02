@@ -35,8 +35,6 @@ export const Player = () => {
     resetPoint();
   };
 
-  
-
   const [ref, api] = useSphere(() => ({
     mass: 1,
     type: "Dynamic",
@@ -59,24 +57,52 @@ export const Player = () => {
   const y = +pos.current[1].toFixed(2);
   const z = +pos.current[2].toFixed(2);
   const xyz = [x, y, z];
-  console.log(x,y,z)
+  console.log("x",x, "y",y, "z",z);
 
-  function speedBlock(){  
-    let speedBoost = setInterval(() => (JUMP_FORCE = 50), 1000);
-    //end speed effect
+  function timeJumpBlock() {
+    let jumpBoost = setInterval(() => (JUMP_FORCE = 30), 100);
+    //end jump effect
+    setTimeout(() => {
+      clearInterval(jumpBoost);
+      powerDownSFX.play();
+      JUMP_FORCE = 4;
+    }, 1000);
+  }
+
+  //jump boost feature on the question block
+  function jumpBlock() {
+    if ((x <= -0.5 && x >= 0.2) && y == 0.5 && (x <= -9.5 && x >= -9.6)) {
+      console.log("jump ready")
+      powerUpSFX.play();
+      timeJumpBlock();
+    }
+  }
+  jumpBlock();
+
+  function timeSpeedBlock() {
+    let speedBoost = setInterval(() => (MOVE = 10), 100);
     setTimeout(() => {
       clearInterval(speedBoost);
-      powerDownSFX.play()
-      JUMP_FORCE = 4;
-    }, 3000);
+      powerDownSFX.play();
+      MOVE = 4;
+    }, 1000);
   }
-  
-  //speed boost feature
-  if(x >= -0.5 && y <= 0.5 && z <= -10){
-    console.log("here")
-    powerUpSFX.play()
-    speedBlock()
-  }
+
+  //jump boost feature on the question block
+  // function speedBlock() {
+  //   if ((x <= -1.5 || x <= 1.5) && y == 0.5 && (z <= -0.9 || z <= 0.95)) {
+  //     powerUpSFX.play();
+  //     timeSpeedBlock();
+  //   }
+  // }
+  // speedBlock();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      remove();
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   //Fall logic keep track
   useEffect(() => {
@@ -92,12 +118,13 @@ export const Player = () => {
     return () => clearInterval(interval);
   }, []);
 
-
-
-  if (x >= -0.5 && y <= 2 && z <= -29) {
-    winSFX.play();
-    navigate("/win");
+  function winBlock() {
+    if (x >= -0.5 && y <= 2 && z <= -29) {
+      winSFX.play();
+      navigate("/win");
+    }
   }
+  winBlock();
 
   useFrame(() => {
     camera.position.copy(
@@ -128,13 +155,12 @@ export const Player = () => {
       .applyEuler(camera.rotation);
 
     //run movement
-    sprint ? MOVE = 6 : MOVE = 4
+    sprint ? (MOVE = 6) : (MOVE = 4);
 
     api.velocity.set(direction.x, vel.current[1], direction.z);
 
     //jump logic and prevent multiple jumps before landing
     if (jump && Math.abs(vel.current[1].toFixed(2)) < 0.01) {
-      remove();
       jumpSFX.play();
       api.velocity.set(vel.current[0], JUMP_FORCE, vel.current[2]);
     }

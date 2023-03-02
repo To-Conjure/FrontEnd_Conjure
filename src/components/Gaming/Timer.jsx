@@ -12,7 +12,7 @@ const Timer = () => {
   const timeSeconds = time.toFixed(2);
   const timer = useStore((state) => state.countDown);
   const overTime = useStore((state) => state.resetCountDown);
-
+  const resetPoint =  useStore((state) => state.resetPoint);
   const gameOver = () => {
     if (timeSeconds < 1) {
       tickingSFX.volume = 0.8;
@@ -25,6 +25,7 @@ const Timer = () => {
       gameOver.loop = false;
       navigate("/lose");
       overTime();
+      resetPoint()
     }
   };
   gameOver();
