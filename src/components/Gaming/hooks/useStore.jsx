@@ -1,33 +1,6 @@
 import create from "zustand";
 import { nanoid } from "nanoid";
 
-// let i = 0;
-
-// function countUp() {
-//   let interval = setInterval(function () {
-//     i += 1;
-
-//     if (i === 5) {
-//       clearInterval(interval);
-//       countdown();
-//     }
-//     console.log(i);
-//   }, 1000);
-// }
-
-// function countdown() {
-//   let timer = setInterval(function () {
-//     i -= 1;
-
-//     if (i === 0) {
-//       clearInterval(timer);
-//       countUp();
-//     }
-//     console.log(i);
-//   }, 1000);
-// }
-
-// countUp();
 
 export const useStore = create((set) => ({
   texture: "spaceGround",
@@ -87,16 +60,16 @@ export const useStore = create((set) => ({
     },
 
     //road
-    {
-      key: nanoid(),
-      pos: [0, 0.5, -3],
-      texture: "spaceGround",
-    },
-    {
-      key: nanoid(),
-      pos: [0, 1, -4],
-      texture: "spaceGround",
-    },
+    // {
+    //   key: nanoid(),
+    //   pos: [0, 0.5, -3],
+    //   texture: "spaceGround",
+    // },
+    // {
+    //   key: nanoid(),
+    //   pos: [0, 1, -4],
+    //   texture: "spaceGround",
+    // },
 
     //obstacle 1
 
@@ -252,37 +225,6 @@ export const useStore = create((set) => ({
       texture: "mystery",
     },
     //end of obstacle 1
-
-    // {
-    //   key: nanoid(),
-    //   pos: [0, 1.5, -13],
-    //   texture: "spaceGround",
-    // },
-    // {
-    //   key: nanoid(),
-    //   pos: [0, 2, -15],
-    //   texture: "spaceGround",
-    // },
-    // {
-    //   key: nanoid(),
-    //   pos: [0, 2, -18],
-    //   texture: "spaceGround",
-    // },
-    // {
-    //   key: nanoid(),
-    //   pos: [0, 2, -20],
-    //   texture: "spaceGround",
-    // },
-    // {
-    //   key: nanoid(),
-    //   pos: [0, 2, -23],
-    //   texture: "spaceGround",
-    // },
-    // {
-    //   key: nanoid(),
-    //   pos: [0, 2, -25],
-    //   texture: "spaceGround",
-    // },
 
     //goal area
     {

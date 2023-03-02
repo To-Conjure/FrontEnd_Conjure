@@ -15,7 +15,7 @@ export default function Map(props) {
   return (
     <>
       <Points/>
-      <Timer/>
+      {/* <Timer/> */}
       <Canvas>
         <Stars
           radius={100}
