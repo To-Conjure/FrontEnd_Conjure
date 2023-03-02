@@ -10,7 +10,6 @@ import {
 } from "@react-three/drei";
 import flight from "../sounds/flight.mp3";
 import { useStore } from "./hooks/useStore";
-import redWarp from "../images/redWarp.gif"
 
 const flightSFX = new Audio(flight);
 
@@ -113,10 +112,6 @@ export default function Lose() {
     color: "#FFFFFF",
     background: "transparent",
   };
-
-  const backgroundStyle = {
-    backgroundImage: "url('../images/warping.gif')",
-  }
 
   const retryHoverOn = () => {
     setIsHover(true);

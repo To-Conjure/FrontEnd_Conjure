@@ -1,21 +1,20 @@
 import { Physics } from "@react-three/cannon";
-import { Stars, Sparkles } from "@react-three/drei";
+import { Stars } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Ground } from "./Ground";
 import { Player } from "./Player";
 import { FPV } from "./FPV";
-import "./game.css"
+import "./game.css";
 import { Cubes } from "./Cubes";
 import SkyTime from "./SkyTime";
 import Points from "./Points";
 import Timer from "./Timer";
 
-export default function Map(props) {
-
+export default function Map() {
   return (
     <>
-      <Points/>
-      {/* <Timer/> */}
+      <Points />
+      <Timer />
       <Canvas>
         <Stars
           radius={100}
@@ -26,12 +25,12 @@ export default function Map(props) {
           fade
           speed={1}
         />
-        <SkyTime/>
+        <SkyTime />
         <ambientLight intensity={1} />
         <FPV />
         <Physics>
           <Player />
-          <Cubes/>
+          <Cubes />
           <Ground />
         </Physics>
       </Canvas>

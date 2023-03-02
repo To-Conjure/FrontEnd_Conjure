@@ -11,7 +11,6 @@ function actionKeys(key){
         Digit1: "stone",
 		Digit2: "grass"
     }
-	// console.log(key)
     return keyActionList[key]
 }
 
@@ -39,7 +38,6 @@ export const useKeyboard = () => {
 	}, [])
 
 	const handleKeyUp = useCallback((e) => {
-        // console.log(e) log key presses
 		const action = actionKeys(e.code)
 		if (action) {
 			setActions((prev) => {
@@ -52,7 +50,6 @@ export const useKeyboard = () => {
 	}, [])
 
 	useEffect(() => {
-        //track player events
 		document.addEventListener('keydown', handleKeyDown)
 		document.addEventListener('keyup', handleKeyUp)
 		return () => {

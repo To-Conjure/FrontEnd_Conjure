@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 
 export const useStore = create((set) => ({
   texture: "spaceGround",
-  points: 100,
+  points: 300,
   time: 10,
   cubes: [
     //Starting platform
@@ -225,13 +225,34 @@ export const useStore = create((set) => ({
       texture: "mystery",
     },
     //end of obstacle 1
-
-    //goal area
     {
       key: nanoid(),
       pos: [0, -1, -29],
       texture: "stoneBrick",
     },
+
+    //road
+    {
+      key: nanoid(),
+      pos: [0, -1, -15],
+      texture: "stoneBrick",
+    },
+    {
+      key: nanoid(),
+      pos: [0, -1, -20],
+      texture: "stoneBrick",
+    },
+    {
+      key: nanoid(),
+      pos: [0, -1, -23],
+      texture: "stoneBrick",
+    },
+    {
+      key: nanoid(),
+      pos: [0, -1, -25],
+      texture: "stoneBrick",
+    },
+        //goal area
     {
       key: nanoid(),
       pos: [-1, -1, -29],
@@ -294,7 +315,7 @@ export const useStore = create((set) => ({
     }));
   },
   removePoint: () => set((state) => ({ points: state.points - 1 })),
-  resetPoint: () => set({ points: 100 }),
+  resetPoint: () => set({ points: 300 }),
   countDown: () => set((state) => ({ time: state.time - 0.01 })),
   resetCountDown: () => set({ time: 10 }),
 }));
