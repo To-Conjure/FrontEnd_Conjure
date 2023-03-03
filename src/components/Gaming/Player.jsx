@@ -24,7 +24,7 @@ let MOVE = 4;
 export const Player = () => {
   const navigate = useNavigate();
   const { camera } = useThree();
-  const { goBackward, goForward, goRight, goLeft, jump, sprint } =
+  const { goBackward, goForward, goRight, goLeft, jump, sprint, exit } =
     useKeyboard();
   const removePoint = useStore((state) => state.removePoint);
   const resetPoint = useStore((state) => state.resetPoint);
@@ -36,6 +36,7 @@ export const Player = () => {
   const reset = () => {
     resetPoint();
   };
+  if(exit) navigate("/play")
 
   const [ref, api] = useSphere(() => ({
     mass: 1,

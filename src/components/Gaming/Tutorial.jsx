@@ -1,4 +1,5 @@
-import tutorial from "../images/tutorial.png"
+import tutorial from "../images/tutorial.png";
+import htp from "../images/htp.png";
 import play from "../images/playButton.png";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
@@ -11,11 +12,12 @@ const Tutorial = () => {
   const [isHover, setIsHover] = useState(false);
 
   const boxStyle = {
-    backgroundColor: isHover ? 'black' : 'white',
-    color: isHover ? 'black' : 'white',
+    backgroundColor: isHover ? "black" : "white",
+    color: isHover ? "black" : "white",
     borderRadius: "50%",
-    width: "300px"
- };
+    width: "200px",
+    height: "100px"
+  };
 
   const handleMouseEnter = () => {
     setIsHover(true);
@@ -27,20 +29,17 @@ const Tutorial = () => {
   return (
     <>
       <div className="w-full h-full bg-galaxy bg-no-repeat bg-cover flex justify-center">
-        <img
-          src={tutorial}
-          alt="tutorial"
-          className="h-full"
-        />
+        <img src={tutorial} alt="tutorial" className="h-full" />
+        <img src={htp} alt="how to play" className="h-full" />
       </div>
       <img
         src={play}
         alt="play"
-        className="absolute bottom-0 right-0"
+        className="absolute bottom-0 right-0 z-[10]"
         style={boxStyle}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onClick = {() => (flightSFX.play(),navigate("/game"))}
+        onClick={() => (flightSFX.play(), navigate("/game"))}
       />
     </>
   );

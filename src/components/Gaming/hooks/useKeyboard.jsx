@@ -8,8 +8,11 @@ function actionKeys(key){
         KeyD: "goRight",
         Space: "jump",
 		ShiftLeft: "sprint",
-        Digit1: "stone",
-		Digit2: "grass"
+		ArrowUp: "goForward",
+        ArrowLeft: "goLeft",
+        ArrowDown: "goBackward",
+        ArrowRight: "goRight",
+		Escape: "exit",
     }
     return keyActionList[key]
 }
@@ -21,12 +24,13 @@ export const useKeyboard = () => {
 		goLeft: false,
 		goRight: false,
 		sprint: false,
+		exit: false,
 		grass: false,
 	})
 
 	const handleKeyDown = useCallback((e) => {
    		const action = actionKeys(e.code)
-	
+		console.log(e.code)
 		if (action) {
 			setActions((prev) => {
 				return ({
