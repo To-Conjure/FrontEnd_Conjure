@@ -9,22 +9,22 @@ import win from "../sounds/winner.wav";
 import jump from "../sounds/jump.mp3";
 import powerUp from "../sounds/powerUp.mp3";
 import powerDown from "../sounds/powerDown.mp3";
-import speed from "../sounds/speed.mp3";
 import { useStore } from "./hooks/useStore";
-const speedSFX = new Audio(speed);
+import speed from "../sounds/speed.mp3";
 const winSFX = new Audio(win);
+const speedSFX = new Audio(speed);
 const powerUpSFX = new Audio(powerUp);
 const powerDownSFX = new Audio(powerDown);
 const deathSFX = new Audio(death);
 const jumpSFX = new Audio(jump);
 
-let JUMP_FORCE = 6;
+let JUMP_FORCE = 4;
 let MOVE = 4;
 
 export const Player = () => {
   const navigate = useNavigate();
   const { camera } = useThree();
-  const { goBackward, goForward, goRight, goLeft, jump, sprint, exit } =
+  const { goBackward, goForward, goRight, goLeft, jump, sprint } =
     useKeyboard();
   const removePoint = useStore((state) => state.removePoint);
   const resetPoint = useStore((state) => state.resetPoint);
@@ -36,7 +36,6 @@ export const Player = () => {
   const reset = () => {
     resetPoint();
   };
-  if(exit) navigate("/play")
 
   const [ref, api] = useSphere(() => ({
     mass: 1,
@@ -60,10 +59,10 @@ export const Player = () => {
   const y = +pos.current[1].toFixed(2);
   const z = +pos.current[2].toFixed(2);
   const xyz = [x, y, z];
-  // console.log("x", x, "y", y, "z", z);
+  console.log("x",x, "y",y, "z",z);
 
   function timeJumpBlock() {
-    let jumpBoost = setInterval(() => (JUMP_FORCE = 30), 100);
+    let jumpBoost = setInterval(() => (JUMP_FORCE = 12), 100);
     //end jump effect
     setTimeout(() => {
       clearInterval(jumpBoost);
@@ -75,7 +74,11 @@ export const Player = () => {
   //jump boost feature on the question block
   function jumpBlock() {
     if (x >= -0.5 && y === 0.5 && z < -9.5 && z >= -9.9) {
-      // console.log("jump ready")
+      console.log("jump ready")
+      powerUpSFX.play();
+      timeJumpBlock();
+    } else if (x >= -4 && y === 11.5 && z < -9.5 && z >= -9.9) {
+      console.log("jump ready")
       powerUpSFX.play();
       timeJumpBlock();
     }
@@ -88,14 +91,13 @@ export const Player = () => {
       clearInterval(speedBoost);
       powerDownSFX.play();
       MOVE = 4;
-    }, 3000);
+    }, 1000);
   }
 
-  //speed boost feature on the question block
+  //jump boost feature on the question block
   function speedBlock() {
     if (x >= -1.5 && x <= 1.5 && y === 1.5 && z < -1 && z >= -1.2) {
-      console.log("speed ready");
-      speedSFX.volume = 0.1;
+      speedSFX.volume = 0.1
       speedSFX.play();
       timeSpeedBlock();
     }
@@ -127,6 +129,9 @@ export const Player = () => {
     if (x >= -0.5 && y <= 2 && z <= -29) {
       winSFX.play();
       navigate("/win");
+    // } else if (x >= 0.5 && y <= 1.5 && z <= 9.7) {
+    //   winSFX.play();
+    //   navigate("/win");
     }
   }
   winBlock();

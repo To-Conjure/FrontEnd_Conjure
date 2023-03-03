@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
@@ -9,7 +9,7 @@ import {
   useFBX,
 } from "@react-three/drei";
 import { useStore } from "./hooks/useStore";
-
+import UserContext from "../../Context/userContext";
 //Model
 //Spaceship
 const Spaceship = () => {
@@ -75,6 +75,7 @@ const MenuModel = () => {
 };
 
 export default function Win() {
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const textStyle = "mt-20 md:text-[100px] text-center font-bold";
   const resetPoint = useStore((state) => state.resetPoint);
@@ -133,7 +134,7 @@ export default function Win() {
       <MenuModel />
       <section>
         <p className={textStyle} style={scoreStyle}>
-          SCORE:{points}
+          {user ? `${user.toUpperCase()} WON SCORE: ${points}` : `CAPTAIN WINNER SCORE:${points}`}
         </p>
         <p
           className={textStyle}
