@@ -11,6 +11,7 @@ import powerUp from "../sounds/powerUp.mp3";
 import powerDown from "../sounds/powerDown.mp3";
 import { useStore } from "./hooks/useStore";
 import speed from "../sounds/speed.mp3";
+
 const winSFX = new Audio(win);
 const speedSFX = new Audio(speed);
 const powerUpSFX = new Audio(powerUp);
@@ -28,6 +29,8 @@ export const Player = () => {
     useKeyboard();
   const removePoint = useStore((state) => state.removePoint);
   const resetPoint = useStore((state) => state.resetPoint);
+  const addLevel = useStore((state) => state.addLevel);
+  const resetLevel = useStore((state) => state.resetLevel);
 
   const remove = () => {
     removePoint();
@@ -128,6 +131,7 @@ export const Player = () => {
   function winBlock() {
     if (x >= -0.5 && y <= 2 && z <= -29) {
       winSFX.play();
+      
       navigate("/win");
     // } else if (x >= 0.5 && y <= 1.5 && z <= 9.7) {
     //   winSFX.play();

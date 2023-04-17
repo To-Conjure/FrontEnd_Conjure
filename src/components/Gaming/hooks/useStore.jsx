@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 export const useStore = create((set) => ({
   texture: "spaceGround",
   points: 300,
+  levels:0,
   time: 10,
   cubes: [
     //Starting platform
@@ -515,6 +516,8 @@ export const useStore = create((set) => ({
       }),
     }));
   },
+  addLevel: () => set((state) => ({ levels: state.points + 1 })),
+  resetLevel: () => set({ levels: 0 }),
   removePoint: () => set((state) => ({ points: state.points - 1 })),
   resetPoint: () => set({ points: 300 }),
   countDown: () => set((state) => ({ time: state.time - 0.01 })),
